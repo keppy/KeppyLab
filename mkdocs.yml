@@ -10,7 +10,17 @@ theme:
     accent: indigo
   features:
     - navigation.tabs
+    - content.code.copy
   custom_dir: overrides
+nav:
+  - Home:
+    - About the Lab: 'index.md'
+    - 'Writings & Research': "blog/index.md"
+    - Contact: 'contact.md'
+  - 'Writings & Research':
+    - "blog/index.md"
+  - Contact:
+    - Connect with Me: 'contact.md'
 plugins:
     - blog
     - search
@@ -24,6 +34,13 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.tilde
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
 repo_url: https://github.com/keppy/KeppyLab
 extra:
   social:
@@ -35,3 +52,6 @@ extra:
       link: https://www.linkedin.com/in/james-dominguez-5b342b226/
     - icon: fontawesome/brands/x-twitter
       link: https://twitter.com/keppylab_ai
+    - icon: fontawesome/brands/hacker-news
+      link: https://news.ycombinator.com/user?id=keppy
+copyright: Copyright &copy; 2024 James Dominguez

@@ -1,3 +1,4 @@
+# Contact :octicons-mail-16:
 ## Connect with Me
 
  Drop me a line ^^james@keppylab.com^^ or find me on these platforms:

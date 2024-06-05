@@ -1,20 +1,22 @@
 # Home 
 
-## About the Lab :material-abacus:
-KeppyLab is my passion project. For many years I have dreamed of running an AI lab that focuses on three core values:
+## About KeppyLab :material-abacus:
+KeppyLab is an open source AI research and development laboratory focusing on biomedical data, LLMs, and adapting new techniques in AI to build more than just another chatbot.
+Our core guiding principals are:
 
-1. Open source everything you can
-1. Cross-domain pollination
-1. Evidence over assumptions
+1. Open source everything you can & give users the option to use Ollama OR GPT-4 whenever possible
+1. Cross-domain pollination -- apply AI to biomedical data, apply techniques from biomedicine to AI
+1. Evidence over assumptions -- treat LLMs as black boxes and test extensively -- validate your experiments and backup claims with data
 
 We are in the early stages of forming the tool chain and what our core focuses will be, but there are many areas [ripe for investigation](https://github.com/keppy/KeppyLab/blob/ripe-problems/ripe_problems.md).
 
-If you are in the Seattle area check out our monthly event, the [KeppyLab AI Collective](https://www.eventbrite.com).
+If you are in the Seattle area check out our monthly event, the [KeppyLab AI Hackers & Paper Readers](https://lu.ma/ne8nixj8).
 
 ## Current Work :material-file-document:
-I write about fine tuning and pushing the boundaries of generative AI. Drop me a line ^^james@keppylab.com^^!
+I write about fine tuning, AI engineering, and pushing the boundaries of generative AI. Drop me a line ^^james@keppylab.com^^!
 
-I'm currently working on [WorldEnder.ai](https://www.github.com/keppy/WorldEnder.ai); an interactive RAG system about the apocalypse. Through this project we will learn just how far we can push RAG in a fun (read: slightly concerning) direction :octicons-thumbsup-24:
+[WorldEnder.ai](https://www.github.com/keppy/WorldEnder.ai) 🌎💥 A text-adventure about extinction events with a RAG backend 
+[Disease Lab](https://github.com/keppy/disease-lab) 🧪 Knowledge graph informed AI for disease research
 
 ## Mailing List :material-email-newsletter:
 Every week I highlight papers and advancements in LLMs and other areas of AI/ML. This is essentially a curated form of my weekly study notes I share back to the community. Sign up below: 

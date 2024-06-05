@@ -4,3 +4,4 @@
 1. Multimodal models
 1. Language models that work with ancient language texts
 1. Automated fine tuning in multimodal models (alternatively/additionally, can you use a catalogue of items at a URL to augment a multimodal generation model?)
+1. kg + rag automation and frameworks

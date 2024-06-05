@@ -16,6 +16,7 @@ If you are in the Seattle area check out our monthly event, the [KeppyLab AI Hac
 I write about fine tuning, AI engineering, and pushing the boundaries of generative AI. Drop me a line ^^james@keppylab.com^^!
 
 [WorldEnder.ai](https://www.github.com/keppy/WorldEnder.ai) 🌎💥 A text-adventure about extinction events with a RAG backend 
+
 [Disease Lab](https://github.com/keppy/disease-lab) 🧪 Knowledge graph informed AI for disease research
 
 ## Mailing List :material-email-newsletter:

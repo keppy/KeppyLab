@@ -6,7 +6,7 @@ categories:
     - demos
     - blogets
 ---
-# I Demoed Too Soon
+# I Demoed Too Early
 
 Last Friday I demoed my game [WorldEnder.ai](https://worldender.ai) and it wasn't ready yet. I had too many slides, which were useless in the demo setting, and I was rushing to explain the core invention. If I could do it over again I wouldn’t change a thing.
 

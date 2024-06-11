@@ -2,8 +2,8 @@
 Findings and discoveries documented in written form for your consumption :octicons-sparkle-fill-16:
 
 ## Writing :material-file-document-outline:
-- [Fine Tuning Pythia by Hand and Calculating PPL](./posts/fine-tuning-pythia.md)
 - [I Demoed Too Early](./posts/i-demoed-too-early.md)
+- [Fine Tuning Pythia by Hand and Calculating PPL](./posts/fine-tuning-pythia.md)
 
 ## Notebooks :simple-googlecolab:
 - [Byte-Pair Encoding Tokenization for Ancient Greek](https://github.com/keppy/KeppyLab/blob/master/Copy_of_Byte_Pair_Encoding_tokenization.ipynb)

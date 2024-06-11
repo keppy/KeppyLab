@@ -5,6 +5,7 @@ categories:
     - WorldEnder.ai
     - demos
     - blogets
+comments: true
 ---
 # I Demoed Too Early
 

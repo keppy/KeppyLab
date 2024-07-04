@@ -2,7 +2,7 @@
 Findings and discoveries documented in written form for your consumption :octicons-sparkle-fill-16:
 
 ## Writing :material-file-document-outline:
-- [Research to the People & Stanford Medicine Rare Disease Hackathon](./posts/rare-diseases-hackathon.md)
+- [Research to the People & Stanford Medicine's Rare Disease AI Hackathon](./posts/rare-diseases-hackathon.md)
 - [I Demoed Too Early](./posts/i-demoed-too-early.md)
 - [Fine Tuning Pythia by Hand and Calculating PPL](./posts/fine-tuning-pythia.md)
 

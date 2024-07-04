@@ -6,7 +6,7 @@ categories:
     - rare diseases
 comments: true
 ---
-# Research to the People and Stanford Medicine's Rare Disease Hackathon
+# Research to the People and Stanford Medicine's AI Rare Disease Hackathon
 
 A week ago I flew down to SF to present at Github HQ for a rare disease hackathon aiming to jump-start research in applying LLMs and ML in general to the task of rare disease diagnosis and treatment. The two diseases being researched were Ehlers-Danlos and Hypophosphatasia(HPP). My team decided to focus solely on HPP. We developed a fine tuned model for answering questions about HPP using the ~1300 paper data source that was provided by the event organizers (shout-out to Pete Kane).
 

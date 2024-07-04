@@ -1,6 +1,6 @@
 ---
 draft: false
-date: 2024/7/3
+date: 2024-07-03
 categories:
     - RAG
     - rare diseases

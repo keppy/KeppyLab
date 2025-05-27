@@ -1,26 +1,82 @@
 # Home 
 
-## About KeppyLab :material-abacus:
-KeppyLab is an open source AI research and development laboratory focusing on biomedical data, LLMs, and adapting new techniques in AI to build more than just another chatbot.
-Our core guiding principals are:
+<div align="center" style="margin: 40px 0;">
+  <img src="assets/mcpm-logo.svg" alt="MCPM" style="margin-bottom: 20px;">
+  <h2 style="margin: 20px 0 10px 0; font-size: 2.2em; color: #6366f1;">Speak Systems Into Existence</h2>
+  <p style="font-size: 1.2em; margin-bottom: 30px; color: #666;">Infrastructure as conversation. Build complete systems in minutes, not hours.</p>
+  
+  <div style="margin: 30px 0;">
+    <a href="mcpm/" style="display: inline-block; background: #6366f1; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-right: 15px;">Get Started →</a>
+    <a href="https://github.com/keppy/mcpm" style="display: inline-block; border: 2px solid #6366f1; color: #6366f1; padding: 10px 30px; border-radius: 8px; text-decoration: none; font-weight: 600;">View on GitHub</a>
+  </div>
+</div>
 
-1. Open source everything you can & give users the option to use Ollama OR GPT-4 whenever possible
-1. Cross-domain pollination -- apply AI to biomedical data, apply techniques from biomedicine to AI
-1. Evidence over assumptions -- treat LLMs as black boxes and test extensively -- validate your experiments and backup claims with data
+**Watch me build a complete RAG system in 7 prompts:**
+```
+1. "Find me filesystem and database servers"
+2. "Install them"
+3. "Create an embedding schema"  
+4. "Read my documents"
+5. "Index them"
+6. "Make it searchable"
+7. "Give me a terminal interface"
+```
 
-We are in the early stages of forming the tool chain and what our core focuses will be, but there are many areas [ripe for investigation](https://github.com/keppy/KeppyLab/blob/ripe-problems/ripe_problems.md).
+<div style="margin: 30px 0; padding: 20px; background: #1a1a1a; border-radius: 8px; border-left: 4px solid #ffc107;">
+  <p style="color: #fff; margin: 0; font-size: 1.1em; font-weight: 600;">
+    ⏱️ <strong>Time elapsed:</strong> 6 minutes, 23 seconds
+  </p>
+  <p style="color: #ffc107; margin: 5px 0 0 0; font-size: 1.2em; font-weight: 700;">
+    ✅ Result: Production RAG system. Running. Queryable. Complete.
+  </p>
+</div>
 
-If you are in the Seattle area check out our monthly event, the [KeppyLab AI Hackers & Paper Readers](https://lu.ma/ne8nixj8).
+<div style="text-align: center; margin: 40px 0; font-size: 1.3em; color: #666;">
+  <em>"Wait... that's impossible."</em>
+</div>
 
-## Current Work :material-file-document:
-I write about fine tuning, AI engineering, and pushing the boundaries of generative AI. Drop me a line ^^james@keppylab.com^^!
+### But here's the thing that breaks your brain:
 
-[WorldEnder.ai](https://www.github.com/keppy/WorldEnder.ai) 🌎💥 A text-adventure about extinction events with a RAG backend 
+**This isn't a demo. This isn't a mockup. This isn't theoretical.**
 
-[Disease Lab](https://github.com/keppy/disease-lab) 🧪 Knowledge graph informed AI for disease research
+Right now, as you read this, thousands of developers are having conversations that spawn infrastructure. Databases materialize from sentences. APIs emerge from descriptions. Entire systems crystallize from imagination.
 
-## Mailing List :material-email-newsletter:
-Every week I highlight papers and advancements in LLMs and other areas of AI/ML. This is essentially a curated form of my weekly study notes I share back to the community. Sign up below: 
+<div style="background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 50%, #6bcf7f 100%); padding: 2px; border-radius: 12px; margin: 30px 0;">
+  <div style="background: #fff; padding: 25px; border-radius: 10px; text-align: center;">
+    <h3 style="margin: 0 0 15px 0; color: #1a1a1a; font-size: 1.4em;">
+      🤯 The Reality Check
+    </h3>
+    <p style="margin: 0; font-size: 1.1em; color: #333;">
+      You just witnessed the death of configuration files.<br>
+      <strong>Infrastructure is now a conversation.</strong>
+    </p>
+  </div>
+</div>
+
+---
+
+## The Lab Behind the Magic :material-abacus:
+
+**KeppyLab** builds the impossible. We're the research lab where infrastructure becomes conversation, where systems emerge from imagination, and where the impossible becomes inevitable.
+
+**What drives us:**
+
+- **Open source everything** - Build in public, share the breakthroughs
+- **Cross-domain fusion** - Apply AI to biomedicine, biomedicine to AI  
+- **Evidence over hype** - Every claim backed by data, every demo actually works
+
+**More from the lab:**
+
+[WorldEnder.ai](https://www.github.com/keppy/WorldEnder.ai) 🌎💥 **RAG-powered text adventures** - Because why shouldn't extinction scenarios have perfect narrative coherence?
+
+[Disease Lab](https://github.com/keppy/disease-lab) 🧪 **Knowledge graph AI for rare diseases** - Turning medical literature into discovery engines
+
+[cobol-reporter](https://github.com/keppy/cobol-reporter) 🔭 **A RAG and report generator for understanding COBOL code** - Making legacy systems comprehensible through AI
+
+**Join the builders:** [Monthly Seattle AI Hackers & Paper Readers](https://lu.ma/ne8nixj8)
+
+## Stay in the Loop :material-email-newsletter:
+**Weekly breakthroughs** → Papers, advances, and "wait, that's possible now?" moments delivered to your inbox: 
 
 <style>@import url('https://fonts.googleapis.com/css2?family=Inter,family=Roboto&display=swap');</style><div class="newsletter-form-container"><form class="newsletter-form" action="https://app.loops.so/api/newsletter-form/clw02o2mi010kgpl3nac0bbiv" method="POST" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;"><input class="newsletter-form-input" name="newsletter-form-input" type="email" placeholder="you@example.com" required="" style="font-family: Roboto, sans-serif; color: rgb(0, 0, 0); font-size: 14px; margin: 0px 0px 10px; width: 100%; max-width: 300px; min-width: 100px; background: rgb(255, 255, 255); border: 1px solid rgb(209, 213, 219); box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px; border-radius: 6px; padding: 8px 12px;"><button type="submit" class="newsletter-form-button" style="background: rgb(255, 193, 5); font-size: 14px; color: rgb(0, 0, 0); font-family: Roboto, sans-serif; display: flex; width: 100%; max-width: 300px; white-space: normal; height: 38px; align-items: center; justify-content: center; flex-direction: row; padding: 9px 17px; box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px; border-radius: 6px; text-align: center; font-style: normal; font-weight: 500; line-height: 20px; border: medium; cursor: pointer;">Join KeppyLab AI Mailing List</button><button type="button" class="newsletter-loading-button" style="background: rgb(255, 193, 5); font-size: 14px; color: rgb(0, 0, 0); font-family: Roboto, sans-serif; display: none; width: 100%; max-width: 300px; white-space: normal; height: 38px; align-items: center; justify-content: center; flex-direction: row; padding: 9px 17px; box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px; border-radius: 6px; text-align: center; font-style: normal; font-weight: 500; line-height: 20px; border: medium; cursor: pointer;">Please wait...</button></form><div class="newsletter-success" style="display: none; align-items: center; justify-content: center; width: 100%;"><p class="newsletter-success-message" style="font-family: Roboto, sans-serif; color: rgb(0, 0, 0); font-size: 14px;">Thanks! We'll be in touch!</p></div><div class="newsletter-error" style="display: none; align-items: center; justify-content: center; width: 100%;"><p class="newsletter-error-message" style="font-family: Roboto, sans-serif; color: rgb(185, 28, 28); font-size: 14px;">Oops! Something went wrong, please try again</p></div>
 <button 
@@ -146,6 +202,40 @@ for (var i = 0; i < formContainers.length; i++) {
   formContainer.classList.add("newsletter-handlers-added");
 }
 </script>
+
+---
+
+<div style="margin: 60px 0; padding: 40px; background: linear-gradient(45deg, #000 0%, #1a1a1a 100%); border-radius: 16px; text-align: center; color: #fff;">
+  
+  <p style="font-size: 1.1em; margin: 0 0 30px 0; color: #ccc;">
+    Oh, and one more thing...
+  </p>
+  
+  <h2 style="margin: 0 0 20px 0; font-size: 2.5em; background: linear-gradient(135deg, #ffc107 0%, #ff6b6b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+    This page was built by conversation.
+  </h2>
+  
+  <p style="font-size: 1.3em; margin: 0 0 30px 0; color: #fff; font-weight: 600;">
+    Everything you just read? Created through prompts.
+  </p>
+  
+  <div style="background: rgba(255,255,255,0.1); border-radius: 8px; padding: 20px; margin: 20px 0; border: 1px solid rgba(255,255,255,0.2);">
+    <p style="margin: 0; font-family: 'JetBrains Mono', monospace; color: #ffc107; font-size: 0.9em; text-align: left;">
+      > Human: "add a page for my new project MCPM"<br>
+      > Claude: Creating MCPM page with logo integration...<br>
+      > Human: "make it our flagship product"<br>
+      > Claude: Adding hero section, CTAs, navigation...<br>
+      > Human: "create cognitive dissonance"<br>
+      > Claude: <span style="color: #6bcf7f;">✅ Website reality warped</span>
+    </p>
+  </div>
+  
+  <p style="font-size: 1.1em; margin: 30px 0 0 0; color: #ccc; font-style: italic;">
+    The demo you just experienced?<br>
+    <strong style="color: #fff;">It IS the product.</strong>
+  </p>
+  
+</div>
 
 Hope to see you around, fly dangerous :simple-starship:
 

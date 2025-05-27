@@ -15,8 +15,10 @@ theme:
 nav:
   - Home:
     - About the Lab: 'index.md'
+    - MCPM: 'mcpm.md'
     - 'Writings & Research': "blog/index.md"
     - Contact: 'contact.md'
+  - MCPM: 'mcpm.md'
   - 'Writings & Research':
     - "blog/index.md"
   - Contact:

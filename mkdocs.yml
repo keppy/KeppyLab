@@ -13,16 +13,11 @@ theme:
     - content.code.copy
   custom_dir: overrides
 nav:
-  - Home:
-    - About the Lab: 'index.md'
-    - MCPM: 'mcpm.md'
-    - 'Writings & Research': "blog/index.md"
-    - Contact: 'contact.md'
-  - MCPM: 'mcpm.md'
+  - Home: 'index.md'
+  - describe•: 'describe.md'
   - 'Writings & Research':
     - "blog/index.md"
-  - Contact:
-    - Connect with Me: 'contact.md'
+  - Contact: 'contact.md'
 plugins:
     - blog
     - search

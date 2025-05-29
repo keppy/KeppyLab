@@ -183,20 +183,37 @@ for (var i = 0; i < formContainers.length; i++) {
 }
 </script>
 
-## Oh, and one more thing...
-
-This page was built by conversation.
-
-*Everything you just read?* **Created through prompts.**
-
-> Human: "update the homepage for describe"  
-> Claude: Updating with new branding and messaging...  
-> Human: "make it feel impossible but real"  
-> Claude: Adding cognitive dissonance...  
-> Human: "ship it"  
-> Claude: ✅ Reality updated
-
-*The conversation you just witnessed?* **That's how everything gets built now.**
+<div style="margin: 60px 0; padding: 40px; background: linear-gradient(45deg, #000 0%, #1a1a1a 100%); border-radius: 16px; text-align: center; color: #fff;">
+  
+  <p style="font-size: 1.1em; margin: 0 0 30px 0; color: #ccc;">
+    Oh, and one more thing...
+  </p>
+  
+  <h2 style="margin: 0 0 20px 0; font-size: 2.5em; background: linear-gradient(135deg, #ffc107 0%, #ff6b6b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+    This page was built by conversation.
+  </h2>
+  
+  <p style="font-size: 1.3em; margin: 0 0 30px 0; color: #fff; font-weight: 600;">
+    Everything you just read? Created through prompts.
+  </p>
+  
+  <div style="background: rgba(255,255,255,0.1); border-radius: 8px; padding: 20px; margin: 20px 0; border: 1px solid rgba(255,255,255,0.2);">
+    <p style="margin: 0; font-family: 'JetBrains Mono', monospace; color: #ffc107; font-size: 0.9em; text-align: left;">
+      > Human: "update the homepage for describe"<br>
+      > Claude: Updating with new branding and messaging...<br>
+      > Human: "make it feel impossible but real"<br>
+      > Claude: Adding cognitive dissonance...<br>
+      > Human: "ship it"<br>
+      > Claude: <span style="color: #6bcf7f;">✅ Reality updated</span>
+    </p>
+  </div>
+  
+  <p style="font-size: 1.1em; margin: 30px 0 0 0; color: #ccc; font-style: italic;">
+    The conversation you just witnessed?<br>
+    <strong style="color: #fff;">That's how everything gets built now.</strong>
+  </p>
+  
+</div>
 
 Hope to see you around, fly dangerous 
 

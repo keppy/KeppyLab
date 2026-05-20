@@ -19,6 +19,8 @@ nav:
   - "Writings & Research":
     - "blog/index.md"
   - Contact: "contact.md"
+not_in_nav: |
+  live-resume/index.md
 plugins:
   - blog
   - search

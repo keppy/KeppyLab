@@ -14,7 +14,7 @@ search:
 
   <div class="voxel-copy">
     <p class="voxel-kicker">KeppyLab / hidden sector</p>
-    <h1>James Dominguez</h1>
+    <h2>James Dominguez</h2>
     <p>
       AI product operator, model-behavior builder, and eval/post-training person.
       The page is a tiny voxel resume with a local trigram model wired into the facts.

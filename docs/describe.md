@@ -1,20 +1,15 @@
-# describe•
+# describe
 
-[![npm version](https://img.shields.io/npm/v/@keppylab/describe.svg)](https://www.npmjs.com/package/@keppylab/describe) [![GitHub](https://img.shields.io/badge/GitHub-keppy%2Fdescribe-blue?logo=github)](https://github.com/keppy/describe)
+[![npm version](https://img.shields.io/npm/v/@keppylab/describe.svg)](https://www.npmjs.com/package/@keppylab/describe)
+[![GitHub](https://img.shields.io/badge/GitHub-keppy%2Fdescribe-blue?logo=github)](https://github.com/keppy/describe)
 
-Watch me build a complete RAG system in 7 prompts:
+<p class="kl-page-logo">
+  <img src="/assets/describe-logo.svg" alt="describe logo">
+</p>
 
-```
-1. "Find me filesystem and database servers"
-2. "Install them"
-3. "Create an embedding schema"
-4. "Read my documents"
-5. "Index them"
-6. "Make it searchable"
-7. "Give me a terminal interface"
-```
+describe is an AI-native MCP capability manager.
 
-**Result**: Working RAG system. No config files. No documentation. Just conversation.
+It lets an AI client discover MCP servers, install or register the right ones, write client configuration, and read the resulting capability map back as MCP resources and prompts. In older terms, it is a package manager. In current terms, it is a small control plane for agent tools.
 
 ## Install
 
@@ -22,7 +17,8 @@ Watch me build a complete RAG system in 7 prompts:
 npm install -g @keppylab/describe
 ```
 
-Add to Claude Desktop:
+Add describe to your MCP client:
+
 ```json
 {
   "describe": {
@@ -32,103 +28,108 @@ Add to Claude Desktop:
 }
 ```
 
-Restart Claude. Start describing.
+Restart the client and ask for the capability you want:
 
-## What This Is
-
-Infrastructure used to require configuration. Now it requires conversation.
-
-The difference isn't speed. It's that you never leave the conversation.
-
-## Examples
-
-### GitHub PR Analyzer
-```
-"Install github and code-analysis servers"
-"Connect to my repo"
-"Analyze open PRs for complexity"
-"Flag potential issues"
-"Show me the results"
+```text
+Find MCP servers for GitHub pull request review.
+Install the smallest safe stack.
+Add it to my MCP config.
+Show me what changed.
 ```
 
-### SQL Chat Interface
+## Why It Exists
+
+AI clients need a living map of capabilities: which tools exist, which are installed, which are safe to call, which need credentials, and which context resources can help the model choose the next action.
+
+describe gives that map to the model.
+
+## What It Does
+
+- Discovers public MCP servers from the official MCP Registry API.
+- Caches registry results locally and falls back to a built-in trusted starter set when offline.
+- Installs npm, Docker/OCI, and PyPI-backed MCP servers.
+- Registers remote MCP servers without pretending they need a local install.
+- Adds, removes, backs up, and restores MCP client configuration.
+- Exposes installed state as MCP resources.
+- Exposes reusable prompts for composing and hardening agent stacks.
+- Runs with Python standard library only.
+
+## MCP Surface
+
+### Tools
+
+- `list`
+- `search`
+- `install`
+- `uninstall`
+- `installed`
+- `config-add`
+- `config-remove`
+- `config-list`
+- `config-backup`
+- `config-restore`
+- `registry-refresh`
+
+Tools include JSON schemas and annotations so clients can distinguish read-only queries from configuration-changing actions.
+
+### Resources
+
+- `describe://registry/available`
+- `describe://servers/installed`
+- `describe://guide/agent-stack`
+
+Resources let the model inspect the current capability state before asking to install more things.
+
+### Prompts
+
+- `compose-agent-stack`
+- `harden-mcp-config`
+
+Prompts give the model a reusable planning frame for choosing the smallest server set and reviewing MCP config risk.
+
+## CLI
+
+```bash
+describe list
+describe search github
+describe install github
+describe installed
+describe config-add github
+describe config-list
+describe registry-refresh
 ```
-"Install sqlite server"
-"Connect to my database"
-"Let me query it in plain English"
-"Show results as tables"
+
+Use `--json` for scripts:
+
+```bash
+describe --json search postgres
 ```
 
-### CSV to API
-```
-"Install filesystem and data servers"
-"Read all CSVs from ~/data"
-"Create REST endpoints for each"
-"Add search functionality"
-"Start the server"
-```
+## Configuration
 
-## The Shift
+describe stores local state in `~/.describe` by default.
 
-**Before**: Learn syntax → Write config → Debug → Deploy
+Environment variables:
 
-**After**: Describe what you want → It exists → Iterate by talking
+- `DESCRIBE_HOME`: override the local state directory.
+- `DESCRIBE_REGISTRY`: override the Registry endpoint, or use `builtin`.
+- `DESCRIBE_REGISTRY_LIMIT`: maximum Registry entries to cache.
+- `DESCRIBE_CACHE_TTL_SECONDS`: Registry cache lifetime.
+- `DESCRIBE_MCP_CONFIG`: explicit MCP config file path.
+- `DESCRIBE_MCP_PROTOCOL_VERSION`: protocol version to advertise.
 
-This changes who can build:
-- Researchers can build knowledge bases
-- Designers can create data pipelines
-- Anyone can build what they imagine
+## Safety Model
 
-The barrier isn't syntax anymore. It's imagination.
+describe treats install and config operations as explicit state changes. It backs up MCP config before modifying it, does not invent secret values for server environment variables, and keeps remote servers as config entries instead of downloading code that does not need to exist locally.
 
-## How It Works
+The model should still review every server before use. MCP servers can expose powerful local and network actions; least-capability stacks are the point.
 
-When you say "install filesystem server", describe:
-1. Searches the MCP registry
-2. Installs the server
-3. Configures it automatically
-4. Makes it available to Claude
+## Status
 
-You don't need to know this. You just need to know what you want.
+Current version: `1.1.0`
 
-## Commands
-
-| You Say | What Happens |
-|---------|--------------|
-| "Search for database servers" | Shows available options |
-| "Install server-name" | Installs and configures |
-| "Show installed servers" | Lists what you have |
-| "Remove server-name" | Uninstalls cleanly |
-
-## Self-Modifying Infrastructure
-
-```
-Human: My RAG system is too slow
-Claude: I see it's scanning all documents on each query. Adding caching...
-Claude: Try now - should be 10x faster
-```
-
-The system sees its own state and improves itself through conversation.
-
-## Technical Details
-
-- Python async/await core
-- Official MCP registry integration
-- npm, Docker, git installation support
-- Cross-platform config discovery
-- Isolated virtual environment
-- Full backup/restore
-
-**Requirements**: Python 3.9+, Node.js 18+, Claude Desktop
-
-## Philosophy
-
-We're not building better tools. We're removing tools entirely.
-
-Infrastructure should be a conversation, not a configuration.
+This release updates describe for the registry-backed, resource-aware, prompt-aware MCP era while keeping the original idea intact: tell the AI what capability you need, then let it assemble the smallest working stack.
 
 ---
 
-[GitHub](https://github.com/keppy/describe) • [Discord](https://discord.gg/6rd4M4e4hT) • [@keppylab_ai](https://twitter.com/keppylab_ai)
-
-*The best interface is no interface. The best configuration is conversation.*
+[GitHub](https://github.com/keppy/describe) | [npm](https://www.npmjs.com/package/@keppylab/describe) | [@keppylab_ai](https://twitter.com/keppylab_ai)

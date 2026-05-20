@@ -1,26 +1,29 @@
 site_name: KeppyLab
 site_url: https://www.keppylab.com
+site_description: KeppyLab builds AI-native tools for composing, operating, and understanding software systems.
 theme:
   name: material
   icon:
-    logo: octicons/north-star-24 
+    logo: octicons/north-star-24
   favicon: assets/KeppyLab.png
   palette:
-    primary: amber
-    accent: indigo
+    primary: black
+    accent: teal
   features:
     - navigation.tabs
     - content.code.copy
   custom_dir: overrides
 nav:
-  - Home: 'index.md'
-  - describe•: 'describe.md'
-  - 'Writings & Research':
+  - Home: "index.md"
+  - describe: "describe.md"
+  - "Writings & Research":
     - "blog/index.md"
-  - Contact: 'contact.md'
+  - Contact: "contact.md"
 plugins:
-    - blog
-    - search
+  - blog
+  - search
+extra_css:
+  - stylesheets/extra.css
 markdown_extensions:
   - attr_list
   - pymdownx.emoji:
@@ -51,4 +54,4 @@ extra:
       link: https://twitter.com/keppylab_ai
     - icon: fontawesome/brands/hacker-news
       link: https://news.ycombinator.com/user?id=keppy
-copyright: Copyright &copy; 2024 James Dominguez
+copyright: Copyright &copy; 2026 James Dominguez

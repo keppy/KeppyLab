@@ -22,19 +22,20 @@
 }
 
 .kl-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 26rem);
-  gap: 2rem;
-  align-items: center;
+  display: block;
+  max-width: 56rem;
   margin: 1.5rem 0 2.5rem;
 }
 
 .kl-hero-copy h1 {
   margin: 0.35rem 0 0.9rem;
-  max-width: 12ch;
+  max-width: 54rem;
   color: var(--kl-ink);
-  font-size: clamp(2.25rem, 7vw, 4.8rem);
-  line-height: 0.95;
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  line-height: 1.08;
+  hyphens: none;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .kl-eyebrow {
@@ -81,6 +82,7 @@
 }
 
 .kl-hero-visual {
+  margin-top: 1.25rem;
   padding: 1rem;
   border: 1px solid var(--kl-border);
   border-radius: 8px;
@@ -95,6 +97,7 @@
 
 .kl-map {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
 }
 
@@ -185,15 +188,17 @@
 }
 
 @media (max-width: 760px) {
-  .kl-hero,
   .kl-feature-grid {
     grid-template-columns: 1fr;
   }
 
+  .kl-map {
+    grid-template-columns: 1fr;
+  }
+
   .kl-hero-copy h1 {
-    max-width: none;
-    font-size: 2.7rem;
-    line-height: 1;
+    font-size: 2.35rem;
+    line-height: 1.08;
   }
 
   .kl-newsletter form > div {

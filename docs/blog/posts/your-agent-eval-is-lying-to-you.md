@@ -27,7 +27,7 @@ Down there the interval is wide enough to flip a decision:
 | --- | --- | --- | --- |
 | 47/50 | 50 | 94.0% [83.8%, 97.9%] | No |
 | 94/100 | 100 | 94.0% [87.5%, 97.2%] | No |
-| 235/250 | 250 | 94.0% [90.4%, 96.4%] | Yes |
+| 235/250 | 250 | 94.0% [90.3%, 96.3%] | Yes |
 
 Every row says 94%. Every row means something different. Whichever of those three situations you're actually in, the point estimate won't tell you — so quoting it by itself isn't a simplification, it's an answer to a question nobody asked.
 
@@ -102,11 +102,13 @@ Five verdicts exist and only two of them mean ship. My favorite is `INSUFFICIENT
 
 ## The tool
 
-All of this lives in [gonogo](https://github.com/keppy/gonogo). No runtime dependencies, about 900 lines, MIT. Reference implementation, not a platform — nothing hosted, no tracing, no prompt management, no leaderboard.
+All of this lives in [gonogo](https://github.com/keppy/gonogo). No runtime dependencies, about 1,000 lines, MIT. Reference implementation, not a platform — nothing hosted, no tracing, no prompt management, no leaderboard.
 
 ```bash
-pip install gonogo
+pip install gonogo-eval
 ```
+
+(Installs as `gonogo-eval` — the bare name on PyPI was taken — and imports as `gonogo`.)
 
 That Banking77 run is `examples/banking77_routing.py`, and the [full score report](../../reports/banking77-routing.html) is the tool's own HTML, not a mockup of it.
 

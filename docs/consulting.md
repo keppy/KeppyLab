@@ -1,6 +1,6 @@
 ---
 page_title: "AI Agent Consulting — KeppyLab"
-description: "Production AI agents for companies that aren't AI companies. Fixed-scope pilot: a working agent on your workflow in 2–4 weeks, with an eval harness so you know whether to trust it."
+description: "Production agents for companies that aren't AI companies. Fixed-scope pilot: a working agent on your workflow in 2–4 weeks, with an eval harness so you know whether to trust it."
 hide:
   - navigation
   - toc
@@ -11,9 +11,9 @@ hide:
 <section class="kl-hero kl-c-hero">
   <div class="kl-hero-copy">
     <p class="kl-eyebrow">KeppyLab Consulting</p>
-    <h1>Working AI agents for companies that aren't AI companies.</h1>
+    <h1>Verifiable agents for companies that aren't AI companies.</h1>
     <p class="kl-lede">
-      A production agent on your actual workflow in 2–4 weeks — with an eval harness included,
+      A production agent on your actual workflow in 2–4 weeks, with an eval harness included,
       so you know whether to trust it.
     </p>
     <div class="kl-actions">
@@ -26,7 +26,7 @@ hide:
 ## The Problem
 
 <p class="kl-c-prose">
-You already suspect an AI agent could take real hours out of your week — document intake, ops triage,
+You already suspect an AI agent could take real hours out of your week: document intake, ops triage,
 reporting, support. But most of what's for sale is either a demo that works once, or an agency retainer
 that never ends. And standing up an ML team to find out is overkill.
 </p>
@@ -39,10 +39,10 @@ that never ends. And standing up an ML team to find out is overkill.
     <h3>The Pilot</h3>
     <p class="kl-c-offer-sub">Fixed scope. Pick one workflow. You get:</p>
     <ul>
-      <li>A working agent wired into your actual tools — not a slide deck</li>
+      <li>A working agent wired into your actual tools, not a slide deck</li>
       <li>An <strong>eval harness</strong>: an automated test suite that scores the agent against your real cases, so you know its accuracy before you rely on it</li>
       <li>A plain-English score report and handoff docs</li>
-      <li>A go/no-go recommendation — including "don't automate this" if that's the honest answer</li>
+      <li>A go/no-go recommendation, including "don't automate this" if that's the honest answer</li>
     </ul>
   </article>
   <article>
@@ -79,17 +79,17 @@ Most agencies don't ship one. KeppyLab doesn't ship without one.
 </p>
 
 <p class="kl-c-prose">
-So here's one. Everything below came out of
-<a href="https://github.com/keppy/gonogo">gonogo</a>, the harness I use on pilots, which I've
+So, here's a real example. Everything below came out of
+<a href="https://github.com/keppy/gonogo">gonogo</a>, the harness I use on implementations, which I've
 open sourced. I pointed it at a plain baseline classifier and 250 customer messages from
 Banking77, a public dataset of real support requests to a retail bank. Nothing here is client
 work, and the classifier is nothing special on purpose.
 </p>
 
 <p class="kl-c-prose">
-Watch what happens to it. Seventy-seven percent sounds like a decent start. Then the interval
-tells you the real rate might be 71.6%, and no confidence threshold gets it over a 95% bar no
-matter where you put the cut. Verdict: don't ship this yet. Better to hear that in week two
+Watch what happens to it: seventy-seven percent sounds like a decent start. Then the interval
+tells you the real rate might be 71.6%, and once you respect the interval, no confidence
+threshold clears a 95% bar anywhere you put the cut. Verdict: don't ship this yet. It's better to hear that in week two
 than the week after it starts touching customers.
 </p>
 

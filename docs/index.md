@@ -9,9 +9,9 @@ hide:
 <section class="kl-hero kl-hero-lead">
   <div class="kl-hero-copy">
     <p class="kl-eyebrow">Applied AI consulting</p>
-    <h1>Working AI agents for companies that aren't AI companies.</h1>
+    <h1>Verifiable agents for companies that aren't AI companies.</h1>
     <p class="kl-lede">
-      A production agent on your actual workflow in 2–4 weeks — with an eval harness included,
+      A production agent on your actual workflow in 2–4 weeks, with an eval harness included,
       so you know whether to trust it.
     </p>
     <div class="kl-actions">
@@ -25,20 +25,20 @@ hide:
 
 <div class="kl-feature-grid">
   <article>
-    <h3>One workflow, fixed scope</h3>
+    <h3>One workflow, scoped</h3>
     <p>We pick the single workflow with the best effort-to-value ratio, then quote scope and timeline in writing. No hourly meter.</p>
   </article>
   <article>
-    <h3>An agent on your real tools</h3>
-    <p>Weekly demos on your actual data, wired into the systems you already run — not a slide deck and not mock data.</p>
+    <h3>An agent on your existing tools</h3>
+    <p>Weekly demos on your actual data, wired into the systems you already run; not a slide deck, and not mock data.</p>
   </article>
   <article>
-    <h3>An eval harness, always</h3>
+    <h3>An eval harness by default</h3>
     <p>An automated test suite that scores the agent against your real cases, so you know its accuracy before you rely on it.</p>
   </article>
   <article>
     <h3>An honest recommendation</h3>
-    <p>A plain-English score report and a go/no-go call — including "don't automate this" when that's the truthful answer.</p>
+    <p>A plain-English score report and a go/no-go call, including "don't automate this" when that's the truthful answer.</p>
   </article>
 </div>
 
@@ -48,7 +48,7 @@ hide:
 
 KeppyLab builds small, sharp AI systems: developer tools, research infrastructure, agent evaluation workflows, and experiments that make software easier to operate through language.
 
-[gonogo](https://github.com/keppy/gonogo) - The eval harness from our pilots, open sourced. Scores an agent on your real cases and returns a deployment decision, including "not enough evidence yet."
+[gonogo](https://github.com/keppy/gonogo) - The eval harness from our implementations, open sourced. Scores an agent on your real cases and returns a deployment decision, including "not enough evidence yet."
 
 [cobol-reporter](https://github.com/keppy/cobol-reporter) - RAG and report generation for understanding COBOL systems.
 
@@ -62,7 +62,7 @@ KeppyLab builds small, sharp AI systems: developer tools, research infrastructur
 
 <div class="kl-newsletter">
   <form action="https://app.loops.so/api/newsletter-form/clw02o2mi010kgpl3nac0bbiv" method="POST">
-    <label for="newsletter-email">KeppyLab AI notes</label>
+    <label for="newsletter-email">KeppyLab weekly notes</label>
     <div>
       <input type="hidden" name="userGroup" value="AI">
       <input id="newsletter-email" name="email" type="email" placeholder="you@example.com" required>

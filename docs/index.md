@@ -48,6 +48,8 @@ hide:
 
 KeppyLab builds small, sharp AI systems: developer tools, research infrastructure, agent evaluation workflows, and experiments that make software easier to operate through language.
 
+[gonogo](https://github.com/keppy/gonogo) - The eval harness from our pilots, open sourced. Scores an agent on your real cases and returns a deployment decision, including "not enough evidence yet."
+
 [cobol-reporter](https://github.com/keppy/cobol-reporter) - RAG and report generation for understanding COBOL systems.
 
 [Disease Lab](https://github.com/keppy/disease-lab) - Knowledge graph AI for rare disease literature and discovery workflows.

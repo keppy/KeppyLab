@@ -79,18 +79,18 @@ Most agencies don't ship one. KeppyLab doesn't ship without one.
 </p>
 
 <p class="kl-c-prose">
-Here is what that looks like in practice. The report below is real output from
-<a href="https://github.com/keppy/gonogo">gonogo</a>, the open-source harness behind this
-practice, scoring an ordinary baseline classifier on 250 messages from Banking77 &mdash; a public
-dataset of genuine retail-bank customer messages. It is a public benchmark, not a client
-engagement, and the baseline is deliberately unremarkable.
+So here's one. Everything below came out of
+<a href="https://github.com/keppy/gonogo">gonogo</a>, the harness I use on pilots, which I've
+open sourced. I pointed it at a plain baseline classifier and 250 customer messages from
+Banking77, a public dataset of real support requests to a retail bank. Nothing here is client
+work, and the classifier is nothing special on purpose.
 </p>
 
 <p class="kl-c-prose">
-Note what the harness does with it. 77% looks like a promising start. The interval says the true
-rate could be as low as 71.6%. No confidence threshold rescues it against a 95% bar. So the
-answer is <em>don't ship this yet</em> &mdash; which is the answer you want in week two of a pilot,
-not the week after you wired it into production.
+Watch what happens to it. Seventy-seven percent sounds like a decent start. Then the interval
+tells you the real rate might be 71.6%, and no confidence threshold gets it over a 95% bar no
+matter where you put the cut. Verdict: don't ship this yet. Better to hear that in week two
+than the week after it starts touching customers.
 </p>
 
 <section class="gng" data-verdict="assist-only">
@@ -131,8 +131,8 @@ not the week after you wired it into production.
 </section>
 
 <p class="kl-c-note">
-<a href="../reports/banking77-routing.html">Read the full score report</a>, including the failing
-cases. Every pilot ships with one of these, measured on your cases instead of a benchmark.
+<a href="../reports/banking77-routing.html">The full report</a> lists the cases it got wrong. Your
+pilot ends with one of these, run against your work instead of a benchmark.
 </p>
 
 ## How It Works

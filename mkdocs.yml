@@ -15,6 +15,7 @@ theme:
   custom_dir: overrides
 nav:
   - Home: "index.md"
+  - Consulting: "consulting.md"
   - describe: "describe.md"
   - "Writings & Research":
     - "blog/index.md"

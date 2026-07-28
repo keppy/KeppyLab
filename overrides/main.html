@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{# Pages may set `page_title` in front matter to control the <title> verbatim. #}
+{% block htmltitle %}
+  {% if page and page.meta and page.meta.page_title %}
+    <title>{{ page.meta.page_title }}</title>
+  {% else %}
+    {{ super() }}
+  {% endif %}
+{% endblock %}
+
+{% block extrahead %}
+  {{ super() }}
+  {% if page and page.meta and page.meta.robots %}
+    <meta name="robots" content="{{ page.meta.robots }}">
+  {% endif %}
+  {% if page and page.meta and page.meta.page_title %}
+    {% set social_title = page.meta.page_title %}
+  {% elif page and page.title and not page.is_homepage %}
+    {% set social_title = (page.title | striptags) ~ " — " ~ config.site_name %}
+  {% else %}
+    {% set social_title = config.site_name %}
+  {% endif %}
+  {% if page and page.meta and page.meta.description %}
+    {% set social_description = page.meta.description %}
+  {% else %}
+    {% set social_description = config.site_description %}
+  {% endif %}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:title" content="{{ social_title }}">
+  <meta property="og:description" content="{{ social_description }}">
+  <meta property="og:url" content="{{ page.canonical_url if page else config.site_url }}">
+  <meta property="og:image" content="https://www.keppylab.com/assets/KeppyLab.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ social_title }}">
+  <meta name="twitter:description" content="{{ social_description }}">
+  <meta name="twitter:image" content="https://www.keppylab.com/assets/KeppyLab.png">
+{% endblock %}

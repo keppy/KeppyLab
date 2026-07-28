@@ -29,7 +29,8 @@
   margin: 1.5rem 0 2.5rem;
 }
 
-.kl-hero-copy h1 {
+.md-typeset .kl-hero-copy h1,
+.md-typeset .kl-hero-copy h2 {
   margin: 0.35rem 0 0.9rem;
   max-width: 12ch;
   color: var(--kl-ink);
@@ -190,7 +191,8 @@
     grid-template-columns: 1fr;
   }
 
-  .kl-hero-copy h1 {
+  .md-typeset .kl-hero-copy h1,
+  .md-typeset .kl-hero-copy h2 {
     max-width: none;
     font-size: 2.7rem;
     line-height: 1;
@@ -198,5 +200,372 @@
 
   .kl-newsletter form > div {
     flex-direction: column;
+  }
+}
+
+/* ---------- Consulting page + consulting-led home hero ---------- */
+
+/* The hero carries the page's real headline, so the redundant markdown H1
+   above it is hidden. It stays in the markup for document structure. */
+body:has(.kl-c-hero) .md-content__inner > h1:first-child,
+body:has(.kl-hero-lead) .md-content__inner > h1:first-child {
+  display: none;
+}
+
+/* These heroes have no side visual, so they run full width rather than using
+   the two-column grid that .kl-hero applies to the describe hero. */
+.kl-c-hero,
+.kl-hero-lead {
+  display: block;
+  max-width: 56rem;
+}
+
+.kl-c-hero {
+  margin-bottom: 3rem;
+}
+
+.md-typeset .kl-c-hero .kl-hero-copy h1,
+.md-typeset .kl-hero-lead .kl-hero-copy h1 {
+  max-width: 42rem;
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  line-height: 1.08;
+  hyphens: none;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* The describe hero now sits below the consulting lead, so it reads smaller. */
+.md-typeset .kl-hero-secondary .kl-hero-copy h2 {
+  max-width: 24ch;
+  font-size: clamp(1.55rem, 3vw, 2.25rem);
+  line-height: 1.15;
+}
+
+.kl-hero-secondary .kl-lede {
+  font-size: 1rem;
+}
+
+.kl-c-prose {
+  max-width: 42rem;
+  color: var(--kl-muted);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.kl-c-note {
+  max-width: 42rem;
+  margin: 1.25rem 0 0;
+  padding: 0.85rem 1rem;
+  border-left: 3px solid var(--kl-teal);
+  background: var(--kl-wash);
+  color: var(--kl-ink);
+  font-weight: 700;
+}
+
+.kl-c-offer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 0;
+}
+
+.kl-c-offer-grid article {
+  padding: 1.15rem;
+  border: 1px solid var(--kl-border);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+/* The Pilot is the headline offer, so it spans the row. */
+.kl-c-offer-grid article:first-child {
+  grid-column: 1 / -1;
+  border-color: var(--kl-ink);
+  box-shadow: 0 0 0 1px var(--kl-ink);
+}
+
+.kl-c-offer-tag {
+  margin: 0 0 0.35rem;
+  color: var(--kl-amber);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.md-typeset .kl-c-offer-grid h3 {
+  margin: 0 0 0.4rem;
+  color: var(--kl-ink);
+  font-size: 1.15rem;
+}
+
+.kl-c-offer-sub {
+  margin: 0 0 0.6rem;
+  color: var(--kl-ink);
+  font-weight: 700;
+}
+
+.md-typeset .kl-c-offer-grid ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.md-typeset .kl-c-offer-grid li {
+  margin-bottom: 0.45rem;
+  color: var(--kl-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.kl-c-scorecard {
+  max-width: 40rem;
+  margin: 1.5rem 0 0;
+  padding: 1rem;
+  border: 1px solid var(--kl-border);
+  border-radius: 8px;
+  background: var(--kl-wash);
+}
+
+.kl-c-scorecard figcaption {
+  margin-bottom: 0.85rem;
+}
+
+.kl-c-scorecard figcaption span {
+  display: block;
+  color: var(--kl-amber);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.kl-c-scorecard figcaption strong {
+  color: var(--kl-ink);
+  font-size: 1rem;
+}
+
+/* Classed so Material's table-wrapper script leaves it alone (it targets
+   `table:not([class])`), which keeps the mockup inside the figure on mobile. */
+.md-typeset .kl-c-scoretable {
+  display: table;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: inherit;
+  table-layout: fixed;
+}
+
+.kl-c-scoretable th:nth-child(1) {
+  width: 44%;
+}
+
+.kl-c-scoretable th:nth-child(2) {
+  width: 22%;
+}
+
+.kl-c-scoretable th:nth-child(3) {
+  width: 34%;
+}
+
+.md-typeset .kl-c-scoretable th {
+  padding: 0 0 0.45rem;
+  border-bottom: 1px solid var(--kl-border);
+  background: transparent;
+  color: var(--kl-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.md-typeset .kl-c-scoretable td {
+  padding: 0.6rem 0.5rem 0.6rem 0;
+  border-bottom: 1px solid rgba(209, 213, 219, 0.55);
+  color: var(--kl-ink);
+  font-size: 0.85rem;
+  vertical-align: middle;
+}
+
+.md-typeset .kl-c-scoretable td:last-child,
+.md-typeset .kl-c-scoretable th:last-child {
+  padding-right: 0;
+  text-align: right;
+}
+
+.kl-c-bar {
+  display: inline-block;
+  width: 3.25rem;
+  height: 0.4rem;
+  margin-right: 0.5rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.12);
+  vertical-align: middle;
+}
+
+.kl-c-bar i {
+  display: block;
+  width: var(--pct, 0%);
+  height: 100%;
+  background: var(--kl-teal);
+}
+
+.kl-c-scoretable td b {
+  font-variant-numeric: tabular-nums;
+}
+
+.kl-c-flag {
+  display: inline-block;
+  padding: 0.16rem 0.44rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.kl-c-flag-ok {
+  background: rgba(15, 118, 110, 0.12);
+  color: #0f766e;
+}
+
+.kl-c-flag-warn {
+  background: rgba(180, 83, 9, 0.12);
+  color: #b45309;
+}
+
+.kl-c-flag-stop {
+  background: rgba(17, 24, 39, 0.1);
+  color: #374151;
+}
+
+.kl-c-scorecard > p {
+  margin: 0.85rem 0 0;
+  color: var(--kl-muted);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.md-typeset ol.kl-c-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: kl-step;
+}
+
+.md-typeset ol.kl-c-steps > li {
+  position: relative;
+  margin: 0;
+  padding: 1rem 1rem 1rem 3rem;
+  border: 1px solid var(--kl-border);
+  border-radius: 8px;
+  counter-increment: kl-step;
+}
+
+.md-typeset ol.kl-c-steps > li::before {
+  position: absolute;
+  top: 1rem;
+  left: 1.15rem;
+  color: var(--kl-teal);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  content: counter(kl-step);
+}
+
+.md-typeset ol.kl-c-steps h3 {
+  margin: 0 0 0.3rem;
+  color: var(--kl-ink);
+  font-size: 1rem;
+}
+
+.md-typeset ol.kl-c-steps h3 span {
+  color: var(--kl-muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.md-typeset ol.kl-c-steps p {
+  margin: 0;
+  color: var(--kl-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.md-typeset ul.kl-c-cred {
+  max-width: 44rem;
+}
+
+.md-typeset ul.kl-c-cred li {
+  margin-bottom: 0.5rem;
+  color: var(--kl-muted);
+  line-height: 1.6;
+}
+
+.kl-c-cta {
+  max-width: 44rem;
+  margin: 2.5rem 0 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--kl-border);
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 55%, #fff7ed 100%);
+}
+
+.md-typeset .kl-c-cta h2 {
+  margin: 0;
+  color: var(--kl-ink);
+  font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+  line-height: 1.2;
+}
+
+.kl-c-cta .kl-actions {
+  margin-top: 1.1rem;
+}
+
+@media (min-width: 901px) {
+  .kl-c-offer-grid article:first-child ul {
+    columns: 2;
+    column-gap: 2rem;
+  }
+
+  .kl-c-offer-grid article:first-child li {
+    break-inside: avoid;
+  }
+}
+
+@media (max-width: 900px) {
+  .kl-c-offer-grid,
+  .md-typeset ol.kl-c-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .kl-c-scorecard {
+    padding: 0.85rem;
+  }
+
+  .md-typeset .kl-c-scoretable td {
+    font-size: 0.8rem;
+  }
+
+  .kl-c-flag {
+    padding: 0.14rem 0.36rem;
+    font-size: 0.62rem;
+    white-space: normal;
+  }
+
+  .kl-c-bar {
+    width: 2.25rem;
+  }
+
+  .kl-c-cta {
+    padding: 1.15rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .kl-c-bar {
+    display: none;
   }
 }

@@ -1,9 +1,32 @@
-# describe
+---
+hide:
+  - navigation
+  - toc
+---
 
-<section class="kl-hero">
+# KeppyLab
+
+<section class="kl-hero kl-hero-lead">
   <div class="kl-hero-copy">
-    <p class="kl-eyebrow">KeppyLab</p>
-    <h1>AI-native capability management for MCP tool stacks.</h1>
+    <p class="kl-eyebrow">Applied AI consulting</p>
+    <h1>Working AI agents for companies that aren't AI companies.</h1>
+    <p class="kl-lede">
+      A production agent on your actual workflow in 2–4 weeks — with an eval harness included,
+      so you know whether to trust it.
+    </p>
+    <div class="kl-actions">
+      <a class="kl-button kl-button-primary" href="consulting/">See the consulting practice</a>
+      <a class="kl-button kl-button-secondary" href="mailto:james@keppylab.com?subject=Scoping%20call%20—%20AI%20agent%20pilot">Book a scoping call</a>
+    </div>
+  </div>
+</section>
+
+## describe
+
+<section class="kl-hero kl-hero-secondary">
+  <div class="kl-hero-copy">
+    <p class="kl-eyebrow">Open source</p>
+    <h2>AI-native capability management for MCP tool stacks.</h2>
     <p class="kl-lede">
       describe helps an AI client discover MCP servers, install or register the right ones,
       write client configuration, and read the resulting capability map back as resources and prompts.

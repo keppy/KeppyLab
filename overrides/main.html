@@ -1,5 +1,19 @@
 {% extends "base.html" %}
 
+{#
+  GoatCounter. Cookieless and no personal data, so there is nothing to consent
+  to. count.js already declines to count localhost, private ranges, file://,
+  iframes and prerenders, so `mkdocs serve` stays out of the stats.
+  The site code lives in mkdocs.yml under extra.goatcounter.
+#}
+{% block analytics %}
+  {{ super() }}
+  {% if config.extra.goatcounter %}
+    <script data-goatcounter="https://{{ config.extra.goatcounter }}.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+  {% endif %}
+{% endblock %}
+
 {# Pages may set `page_title` in front matter to control the <title> verbatim. #}
 {% block htmltitle %}
   {% if page and page.meta and page.meta.page_title %}

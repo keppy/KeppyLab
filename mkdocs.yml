@@ -47,6 +47,9 @@ markdown_extensions:
   - pymdownx.superfences
 repo_url: https://github.com/keppy/KeppyLab
 extra:
+  # GoatCounter site code: the subdomain of <code>.goatcounter.com.
+  # Unset it to disable analytics entirely.
+  goatcounter: keppylab
   social:
     - icon: octicons/mail-16
       link: mailto:james@keppylab.com

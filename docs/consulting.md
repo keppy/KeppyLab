@@ -78,44 +78,62 @@ vibes. It's the difference between a party trick and a system you can put in fro
 Most agencies don't ship one. KeppyLab doesn't ship without one.
 </p>
 
-<figure class="kl-c-scorecard">
-  <figcaption>
-    <span>Illustrative</span>
-    <strong>What a score report looks like</strong>
-  </figcaption>
-  <table class="kl-c-scoretable">
-    <thead>
-      <tr>
-        <th scope="col">Task</th>
-        <th scope="col">Pass rate</th>
-        <th scope="col">Confidence</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Extract fields from invoice</td>
-        <td><span class="kl-c-bar" style="--pct: 96%"><i></i></span><b>96%</b></td>
-        <td><span class="kl-c-flag kl-c-flag-ok">Ship</span></td>
-      </tr>
-      <tr>
-        <td>Route ticket to correct queue</td>
-        <td><span class="kl-c-bar" style="--pct: 91%"><i></i></span><b>91%</b></td>
-        <td><span class="kl-c-flag kl-c-flag-ok">Ship</span></td>
-      </tr>
-      <tr>
-        <td>Flag contract exceptions</td>
-        <td><span class="kl-c-bar" style="--pct: 78%"><i></i></span><b>78%</b></td>
-        <td><span class="kl-c-flag kl-c-flag-warn">Human review</span></td>
-      </tr>
-      <tr>
-        <td>Summarize customer intent</td>
-        <td><span class="kl-c-bar" style="--pct: 62%"><i></i></span><b>62%</b></td>
-        <td><span class="kl-c-flag kl-c-flag-stop">Don't automate</span></td>
-      </tr>
-    </tbody>
-  </table>
-  <p>Numbers above are an example layout, not results from a past engagement. Yours are measured on your own cases.</p>
-</figure>
+<p class="kl-c-prose">
+Here is what that looks like in practice. The report below is real output from
+<a href="https://github.com/keppy/gonogo">gonogo</a>, the open-source harness behind this
+practice, scoring an ordinary baseline classifier on 250 messages from Banking77 &mdash; a public
+dataset of genuine retail-bank customer messages. It is a public benchmark, not a client
+engagement, and the baseline is deliberately unremarkable.
+</p>
+
+<p class="kl-c-prose">
+Note what the harness does with it. 77% looks like a promising start. The interval says the true
+rate could be as low as 71.6%. No confidence threshold rescues it against a 95% bar. So the
+answer is <em>don't ship this yet</em> &mdash; which is the answer you want in week two of a pilot,
+not the week after you wired it into production.
+</p>
+
+<section class="gng" data-verdict="assist-only">
+<header class="gng-head">
+<p class="gng-task">Route customer message to the right queue</p>
+<p class="gng-verdict">ASSIST ONLY</p>
+<p class="gng-gloss">Use it to draft, keep a human on every case.</p>
+</header>
+<p class="gng-reason">Pass rate 77.2% [71.6%, 82.0%] is well short of the 95% target and no confident subset reaches it; useful as a draft-generator, not as an unattended step.</p>
+<dl class="gng-facts">
+<div><dt>Cases evaluated</dt><dd>250</dd></div>
+<div><dt>Passed</dt><dd>193</dd></div>
+<div><dt>Pass rate</dt><dd>77.2% [71.6%, 82.0%]</dd></div>
+<div><dt>Target</dt><dd>95%</dd></div>
+<div><dt>Calibration error</dt><dd>0.42 (ranks cases, scale unreliable)</dd></div>
+</dl>
+<p class="gng-note">The pass rate carries a 95% confidence interval. With 250 cases the true rate could plausibly sit anywhere in that range, which is why the interval and not the headline number drives the decision.</p>
+<table class="gng-table"><caption>Coverage vs precision</caption><thead><tr><th scope="col">Confidence floor</th><th scope="col">Handled</th><th scope="col">Precision</th><th scope="col">To review</th></tr></thead><tbody>
+<tr><td>0.03</td><td><span class="gng-bar" style="--pct:100%"><i></i></span>100%</td><td class="gng-under">77.2% <span class="gng-ci">[71.6%, 82.0%]</span></td><td>0</td></tr>
+<tr><td>0.10</td><td><span class="gng-bar" style="--pct:85%"><i></i></span>85%</td><td class="gng-under">81.7% <span class="gng-ci">[76.0%, 86.3%]</span></td><td>37</td></tr>
+<tr><td>0.18</td><td><span class="gng-bar" style="--pct:70%"><i></i></span>70%</td><td class="gng-under">85.1% <span class="gng-ci">[79.1%, 89.7%]</span></td><td>75</td></tr>
+<tr><td>0.26</td><td><span class="gng-bar" style="--pct:57%"><i></i></span>57%</td><td class="gng-under">88.0% <span class="gng-ci">[81.7%, 92.4%]</span></td><td>108</td></tr>
+<tr><td>0.39</td><td><span class="gng-bar" style="--pct:40%"><i></i></span>40%</td><td class="gng-under">90.0% <span class="gng-ci">[82.6%, 94.5%]</span></td><td>150</td></tr>
+<tr><td>0.51</td><td><span class="gng-bar" style="--pct:27%"><i></i></span>27%</td><td class="gng-under">94.1% <span class="gng-ci">[85.8%, 97.7%]</span></td><td>182</td></tr>
+<tr><td>0.66</td><td><span class="gng-bar" style="--pct:14%"><i></i></span>14%</td><td class="gng-under">97.2% <span class="gng-ci">[85.8%, 99.5%]</span></td><td>214</td></tr>
+<tr><td>0.96</td><td><span class="gng-bar" style="--pct:0%"><i></i></span>0%</td><td class="gng-under">100.0% <span class="gng-ci">[20.7%, 100.0%]</span></td><td>249</td></tr>
+</tbody></table>
+<table class="gng-table"><caption>Calibration</caption><thead><tr><th scope="col">Stated confidence</th><th scope="col">Cases</th><th scope="col">Mean confidence</th><th scope="col">Actual accuracy</th></tr></thead><tbody>
+<tr><td>0.0-0.2</td><td>83</td><td>0.11</td><td class="gng-under">61%</td></tr>
+<tr><td>0.2-0.4</td><td>74</td><td>0.30</td><td class="gng-under">78%</td></tr>
+<tr><td>0.4-0.6</td><td>50</td><td>0.51</td><td class="gng-under">84%</td></tr>
+<tr><td>0.6-0.8</td><td>30</td><td>0.70</td><td class="gng-under">97%</td></tr>
+<tr><td>0.8-1.0</td><td>13</td><td>0.87</td><td class="gng-ok">100%</td></tr>
+</tbody></table>
+<div class="gng-caveats"><p class="gng-op-title">Caveats</p><ul>
+<li>Calibration error 0.42 exceeds 0.15: the confidence score ranks cases usefully but its scale is not a probability. Treat any threshold below as an opaque cut point, and recalibrate before reading it as a percentage.</li>
+</ul></div>
+</section>
+
+<p class="kl-c-note">
+<a href="../reports/banking77-routing.html">Read the full score report</a>, including the failing
+cases. Every pilot ships with one of these, measured on your cases instead of a benchmark.
+</p>
 
 ## How It Works
 

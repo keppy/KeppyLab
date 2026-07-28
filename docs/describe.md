@@ -132,4 +132,4 @@ This release updates describe for the registry-backed, resource-aware, prompt-aw
 
 ---
 
-[GitHub](https://github.com/keppy/describe) | [npm](https://www.npmjs.com/package/@keppylab/describe) | [@keppylab_ai](https://twitter.com/keppylab_ai)
+[GitHub](https://github.com/keppy/describe) | [npm](https://www.npmjs.com/package/@keppylab/describe) | [@yok0zuna](https://twitter.com/yok0zuna)

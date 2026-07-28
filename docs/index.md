@@ -21,101 +21,40 @@ hide:
   </div>
 </section>
 
-## describe
-
-<section class="kl-hero kl-hero-secondary">
-  <div class="kl-hero-copy">
-    <p class="kl-eyebrow">Open source</p>
-    <h2>AI-native capability management for MCP tool stacks.</h2>
-    <p class="kl-lede">
-      describe helps an AI client discover MCP servers, install or register the right ones,
-      write client configuration, and read the resulting capability map back as resources and prompts.
-    </p>
-    <div class="kl-actions">
-      <a class="kl-button kl-button-primary" href="describe/">Get started</a>
-      <a class="kl-button kl-button-secondary" href="https://github.com/keppy/describe">View on GitHub</a>
-    </div>
-  </div>
-  <div class="kl-hero-visual" aria-label="describe capability map">
-    <img class="kl-product-logo" src="/assets/describe-logo.svg" alt="describe logo">
-    <div class="kl-map">
-      <div>
-        <span>Registry</span>
-        <strong>Discover servers</strong>
-      </div>
-      <div>
-        <span>Installer</span>
-        <strong>npm, Docker, PyPI, remote</strong>
-      </div>
-      <div>
-        <span>MCP client</span>
-        <strong>Write config safely</strong>
-      </div>
-      <div>
-        <span>Model context</span>
-        <strong>Expose resources and prompts</strong>
-      </div>
-    </div>
-  </div>
-</section>
-
-```bash
-npm install -g @keppylab/describe
-```
-
-```json
-{
-  "describe": {
-    "command": "npx",
-    "args": ["-y", "@keppylab/describe"]
-  }
-}
-```
-
-## Why It Exists
-
-AI clients are no longer just chat windows with a few tool buttons. They need a living map of capabilities: which tools exist, which are installed, which are safe to call, which need credentials, and which context resources can help the model choose the next action.
-
-describe gives that map to the model.
-
-## What Changed
+## How The Pilot Works
 
 <div class="kl-feature-grid">
   <article>
-    <h3>Registry-backed discovery</h3>
-    <p>Search public MCP servers through the official Registry API, with local caching and a built-in offline starter set.</p>
+    <h3>One workflow, fixed scope</h3>
+    <p>We pick the single workflow with the best effort-to-value ratio, then quote scope and timeline in writing. No hourly meter.</p>
   </article>
   <article>
-    <h3>Resource-aware operation</h3>
-    <p>Expose available and installed capability state as MCP resources so the model can inspect the stack before changing it.</p>
+    <h3>An agent on your real tools</h3>
+    <p>Weekly demos on your actual data, wired into the systems you already run — not a slide deck and not mock data.</p>
   </article>
   <article>
-    <h3>Prompt-aware composition</h3>
-    <p>Ship reusable prompts for composing lean agent stacks and reviewing MCP configuration risk.</p>
+    <h3>An eval harness, always</h3>
+    <p>An automated test suite that scores the agent against your real cases, so you know its accuracy before you rely on it.</p>
   </article>
   <article>
-    <h3>Safer configuration</h3>
-    <p>Back up config before edits, avoid inventing secrets, and register remote servers without unnecessary local installs.</p>
+    <h3>An honest recommendation</h3>
+    <p>A plain-English score report and a go/no-go call — including "don't automate this" when that's the truthful answer.</p>
   </article>
 </div>
 
-## Current Surface
-
-| Layer | What describe exposes |
-| --- | --- |
-| Tools | `list`, `search`, `install`, `uninstall`, `installed`, `config-add`, `config-remove`, `config-list`, `config-backup`, `config-restore`, `registry-refresh` |
-| Resources | `describe://registry/available`, `describe://servers/installed`, `describe://guide/agent-stack` |
-| Prompts | `compose-agent-stack`, `harden-mcp-config` |
+[See the full engagement shapes](consulting/){ .kl-button .kl-button-secondary }
 
 ## From The Lab
 
 KeppyLab builds small, sharp AI systems: developer tools, research infrastructure, agent evaluation workflows, and experiments that make software easier to operate through language.
 
-[WorldEnder.ai](https://www.github.com/keppy/WorldEnder.ai) - RAG-powered text adventures with coherent long-horizon world state.
+[cobol-reporter](https://github.com/keppy/cobol-reporter) - RAG and report generation for understanding COBOL systems.
 
 [Disease Lab](https://github.com/keppy/disease-lab) - Knowledge graph AI for rare disease literature and discovery workflows.
 
-[cobol-reporter](https://github.com/keppy/cobol-reporter) - RAG and report generation for understanding COBOL systems.
+[WorldEnder.ai](https://www.github.com/keppy/WorldEnder.ai) - RAG-powered text adventures with coherent long-horizon world state.
+
+[describe](describe/) - An MCP capability manager: discover servers, write client config, read the capability map back as resources and prompts.
 
 ## Stay In The Loop
 
@@ -130,4 +69,4 @@ KeppyLab builds small, sharp AI systems: developer tools, research infrastructur
   </form>
 </div>
 
-[@keppylab_ai](https://twitter.com/keppylab_ai) | [GitHub](https://github.com/keppy) | [LinkedIn](https://www.linkedin.com/in/james-dominguez-5b342b226/) | [Hugging Face](https://huggingface.co/keppy)
+[@yok0zuna](https://twitter.com/yok0zuna) | [GitHub](https://github.com/keppy) | [LinkedIn](https://www.linkedin.com/in/james-dominguez-5b342b226/) | [Hugging Face](https://huggingface.co/keppy)

@@ -16,10 +16,13 @@ theme:
 nav:
   - Home: "index.md"
   - Consulting: "consulting.md"
-  - describe: "describe.md"
   - "Writings & Research":
     - "blog/index.md"
   - Contact: "contact.md"
+# describe stays published and linked from the home page, but is no longer a
+# top-level tab now that consulting leads the site.
+not_in_nav: |
+  describe.md
 plugins:
   - blog
   - search
@@ -52,7 +55,7 @@ extra:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/james-dominguez-5b342b226/
     - icon: fontawesome/brands/x-twitter
-      link: https://twitter.com/keppylab_ai
+      link: https://twitter.com/yok0zuna
     - icon: fontawesome/brands/hacker-news
       link: https://news.ycombinator.com/user?id=keppy
 copyright: Copyright &copy; 2026 James Dominguez

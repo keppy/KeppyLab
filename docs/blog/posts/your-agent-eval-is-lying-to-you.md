@@ -80,9 +80,12 @@ Hence the fix. Report the calibration error, state flatly that the scale isn't a
 
 Score with an LLM judge, skip checking it against human labels, and every number downstream of it is wallpaper.
 
-What makes this one nasty is how good raw agreement looks. Take a judge that waves everything through. On a case set that's 90% passes, it agrees with you **90% of the time**. It has learned precisely nothing, and Cohen's kappa on it comes out at **0.00**.
+What makes this one nasty is how good raw agreement looks. Take a judge that waves everything through. On a case set that's 90% passes, it agrees with you **90% of the time**. It has learned precisely nothing, and Cohen's kappa on it comes out at **0.00**.[^1]
 
 Label twenty cases yourself — that's enough to start — and put your gate on kappa instead of agreement. Anything under about 0.6, go rewrite the rubric before you report a single number that judge touched.
+
+[^1]:
+    It gets one step worse. If every case in your hand-labelled subset passed and the judge waved them all through too, agreement hits **100%** — and still proves nothing, because the base rate alone guaranteed it. Kappa there is 0/0, undefined. gonogo 0.1.0 reported that case as a perfect 1.0 and called the judge usable; 0.1.1 rejects it and tells you to go find harder cases.
 
 ## What a decision looks like
 

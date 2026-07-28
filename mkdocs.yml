@@ -20,9 +20,10 @@ nav:
     - "blog/index.md"
   - Contact: "contact.md"
 # describe stays published and linked from the home page, but is no longer a
-# top-level tab now that consulting leads the site.
+# top-level tab now that consulting leads the site. live-resume is a hidden page.
 not_in_nav: |
   describe.md
+  live-resume/index.md
 plugins:
   - blog
   - search

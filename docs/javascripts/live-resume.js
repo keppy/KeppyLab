@@ -35,6 +35,13 @@
   const dexList = document.getElementById("sigildex-list");
   const journeyButtons = document.querySelectorAll(".journey-map [data-zone]");
   const moveButtons = document.querySelectorAll("[data-move]");
+  const lootDrop = document.getElementById("loot-drop");
+  const lootKicker = document.getElementById("loot-kicker");
+  const lootTitle = document.getElementById("loot-title");
+  const lootRarity = document.getElementById("loot-rarity");
+  const lootCopy = document.getElementById("loot-copy");
+  const lootReceipts = document.getElementById("loot-receipts");
+  const claimLootButton = document.getElementById("claim-loot");
 
   const facts = [
     {
@@ -277,36 +284,42 @@
   const moves = {
     "matrix-multiplication": {
       label: "Matrix Multiplication",
+      role: "heavy hit",
       power: 34,
       tags: ["model", "system", "agent", "proof"],
       copy: "The wyrm unfolds the whole slop vector space.",
     },
     "plt-meme": {
       label: "plt Meme",
+      role: "chaos tick",
       power: 26,
       tags: ["demo", "prototype", "research", "receipt"],
       copy: "A cursed chart appears. The enemy cannot tell if it is a joke or evidence.",
     },
     "hacker-focus": {
       label: "Hacker Focus",
+      role: "restore HP",
       heal: 38,
       tags: ["guard", "scope", "recover", "focus"],
       copy: "Everything gets quiet enough to see the actual bug.",
     },
     "gradient-bonk": {
       label: "Gradient Bonk",
+      role: "quick hit",
       power: 24,
       tags: ["model", "training", "eval", "debug"],
       copy: "A tiny optimizer bonks the loss landscape into shape.",
     },
     "eval-trap": {
       label: "Eval Trap",
+      role: "break armor",
       power: 31,
       tags: ["eval", "rubric", "regression", "faithfulness"],
       copy: "The distortion confidently steps into a failing test.",
     },
     deslopify: {
       label: "Deslopify",
+      role: "finisher",
       power: 39,
       tags: ["ship", "product", "customer", "demo", "proof"],
       copy: "The resume slop peels off and leaves the real receipt underneath.",
@@ -368,6 +381,8 @@
     player: { x: 12, y: 5, tx: 12, ty: 5 },
     battle: false,
     battleKey: null,
+    mode: "explore",
+    rewardKey: null,
     enemyHp: 100,
     enemyHpMax: 100,
     petHp: 100,
@@ -435,6 +450,16 @@
     resumeRoot?.classList.add("is-playing");
   }
 
+  function setMode(mode, rewardKey = null) {
+    state.mode = mode;
+    state.rewardKey = rewardKey;
+    resumeRoot?.setAttribute("data-mode", mode);
+    resumeRoot?.classList.toggle("is-trial", mode === "trial");
+    resumeRoot?.classList.toggle("is-reward", mode === "reward");
+    if (mode !== "reward" && lootDrop) lootDrop.hidden = true;
+    updateMoveButtons();
+  }
+
   function clamp(value, min, max) {
     return Math.max(min, Math.min(max, value));
   }
@@ -486,6 +511,51 @@
     return petStages[state.stage] || petStages[0];
   }
 
+  function activeCard() {
+    if (state.battleKey === "boss" || state.rewardKey === "boss") return finalBoss;
+    return factByKey[state.battleKey || state.rewardKey || state.activeKey] || factByKey.keppylab;
+  }
+
+  function lootMeta(card) {
+    const tierByKey = {
+      boss: ["mythic", "Mythic proof relic"],
+      corider: ["legendary", "Legendary agent relic"],
+      evals: ["legendary", "Legendary eval relic"],
+      labs: ["legendary", "Legendary labs relic"],
+      startup: ["rare", "Rare operator relic"],
+      keppylab: ["rare", "Rare prototype relic"],
+      ai2: ["rare", "Rare incubator relic"],
+      orb: ["rare", "Rare post-training relic"],
+    };
+    const [rarity, label] = tierByKey[card.key] || ["uncommon", "Uncommon proof relic"];
+    const number = Math.max(1, allCards.findIndex((item) => item.key === card.key) + 1);
+    return { rarity, label, number: String(number).padStart(2, "0") };
+  }
+
+  function moveAffinity(move, card) {
+    if (!move || !card) return { hits: 0, bonus: 0 };
+    const field = `${card.key} ${card.title} ${card.zone} ${card.enemy} ${card.tags.join(" ")} ${card.receipts.join(" ")} ${card.text}`.toLowerCase();
+    const hits = move.tags.filter((tag) => field.includes(tag.toLowerCase())).length;
+    return { hits, bonus: Math.min(20, hits * 5) };
+  }
+
+  function updateMoveButtons() {
+    const card = activeCard();
+    moveButtons.forEach((button) => {
+      const move = moves[button.dataset.move];
+      const span = button.querySelector("span");
+      if (!move) return;
+      const affinity = moveAffinity(move, card);
+      const live = state.battle;
+      button.disabled = !live;
+      button.classList.toggle("is-boosted", live && affinity.bonus > 0);
+      button.title = live
+        ? `${move.label}: ${move.copy}${affinity.bonus ? ` +${affinity.bonus} zone synergy.` : ""}`
+        : "Enter this zone's trial to draw move cards.";
+      if (span) span.textContent = live && affinity.bonus ? `+${affinity.bonus} synergy` : move.role;
+    });
+  }
+
   function anchoredProofCount() {
     return facts.filter((fact) => state.collected.has(fact.key)).length;
   }
@@ -506,8 +576,15 @@
         objective: "The Archive remembers the weird, specific version. Send the link.",
       };
     }
+    if (state.mode === "reward") {
+      const card = activeCard();
+      return {
+        act: "Loot drop / Proof recovered",
+        objective: `${card.title} emblem unlocked. Claim it, then pick the next route.`,
+      };
+    }
     if (state.battle) {
-      const card = state.battleKey === "boss" ? finalBoss : factByKey[state.battleKey] || factByKey.keppylab;
+      const card = activeCard();
       return {
         act: card.key === "boss" ? "Finale / Flattening Gate" : "Trial / Distortion fight",
         objective: card.key === "boss"
@@ -599,6 +676,30 @@
     }
   }
 
+  function showLootDrop(card, firstWin) {
+    if (!lootDrop || !card) return;
+    const meta = lootMeta(card);
+    lootDrop.hidden = false;
+    lootDrop.dataset.rarity = meta.rarity;
+    lootDrop.style.setProperty("--loot", cssColor(card.accent, 0.96));
+    lootDrop.style.setProperty("--loot-bg", cssColor(card.color, 0.2));
+    if (lootKicker) lootKicker.textContent = firstWin ? "new proof drop" : "duplicate drop";
+    if (lootTitle) lootTitle.textContent = `${card.title} emblem`;
+    if (lootRarity) lootRarity.textContent = `#${meta.number} / ${meta.label}`;
+    if (lootCopy) {
+      lootCopy.textContent = firstWin
+        ? card.proof
+        : `Duplicate converted into bond XP. The ${card.title} proof was already anchored.`;
+    }
+    if (lootReceipts) {
+      lootReceipts.replaceChildren(...card.receipts.map((receipt) => {
+        const chip = document.createElement("span");
+        chip.textContent = receipt;
+        return chip;
+      }));
+    }
+  }
+
   function updateJourneyButtons() {
     journeyButtons.forEach((button) => {
       const key = button.dataset.zone;
@@ -620,18 +721,20 @@
     dexList.replaceChildren(...badgeCards.map(({ card, index }) => {
       const item = document.createElement("button");
       const unlocked = state.collected.has(card.key);
+      const meta = lootMeta(card);
       item.type = "button";
       item.className = unlocked ? "is-collected" : "";
+      item.dataset.rarity = meta.rarity;
       item.style.setProperty("--badge", cssColor(card.accent, unlocked ? 0.95 : 0.28));
       item.style.setProperty("--badge-bg", cssColor(card.color, unlocked ? 0.18 : 0.08));
       const gem = document.createElement("span");
       gem.className = "badge-gem";
-      gem.textContent = unlocked ? String(index + 1).padStart(2, "0") : "??";
+      gem.textContent = unlocked ? meta.number : "??";
       const label = document.createElement("span");
       label.className = "badge-name";
-      label.textContent = unlocked ? card.title : "locked";
+      label.textContent = unlocked ? card.title : "locked drop";
       item.append(gem, label);
-      item.title = unlocked ? `${card.title}: ${card.proof}` : "Win this zone trial to reveal the emblem.";
+      item.title = unlocked ? `${meta.label}: ${card.proof}` : "Win this zone trial to reveal the emblem.";
       item.addEventListener("click", () => {
         focusCard(card.key);
         updateProofCard(card, unlocked);
@@ -641,14 +744,15 @@
   }
 
   function updateHud() {
-    const active = state.battle
-      ? (state.battleKey === "boss" ? finalBoss : factByKey[state.battleKey] || factByKey[state.activeKey] || finalBoss)
-      : factByKey[state.activeKey] || finalBoss;
+    const active = activeCard();
     const pet = currentPet();
     const chapter = currentChapter();
+    resumeRoot?.setAttribute("data-mode", state.mode || (state.battle ? "trial" : "explore"));
+    resumeRoot?.classList.toggle("is-trial", state.battle);
+    resumeRoot?.classList.toggle("is-reward", state.mode === "reward");
     if (storyAct) storyAct.textContent = chapter.act;
     if (storyObjective) storyObjective.textContent = chapter.objective;
-    if (status) status.textContent = state.battle ? `trial / ${active.zone}` : `route / ${active.zone}`;
+    if (status) status.textContent = state.battle ? `trial / ${active.zone}` : state.mode === "reward" ? `drop / ${active.title}` : `route / ${active.zone}`;
     if (signalMeter) signalMeter.textContent = `${state.xp} xp`;
     if (winsMeter) winsMeter.textContent = String(anchoredProofCount());
     if (dexMeter) dexMeter.textContent = `${state.collected.size}/${allCards.length}`;
@@ -659,13 +763,15 @@
     if (battleBars) battleBars.dataset.state = state.battle ? "battle" : "rest";
     if (petHpBar) petHpBar.style.width = `${state.battle ? clamp(state.petHp, 0, 100) : 100}%`;
     if (enemyHpBar) enemyHpBar.style.width = `${state.battle ? clamp((state.enemyHp / state.enemyHpMax) * 100, 0, 100) : 0}%`;
-    if (!state.battle && battleKicker && battleTitle && battleCopy) {
+    if (input) input.placeholder = state.battle ? "type a move, ask for proof, or cast a card" : "ask about a zone, or click a map location";
+    if (!state.battle && state.mode !== "reward" && battleKicker && battleTitle && battleCopy) {
       battleKicker.textContent = canEnterFinalBoss() ? "gate exposed" : "archive pressure";
       battleTitle.textContent = canEnterFinalBoss() ? "Flattening Gate is open" : "The signal is unstable";
-      battleCopy.textContent = `${chapter.objective} HP refills when a trial starts.`;
+      battleCopy.textContent = `${chapter.objective} Map buildings are fast travel; move cards unlock inside trials.`;
     }
     updateJourneyButtons();
     updateDex();
+    updateMoveButtons();
   }
 
   function focusCard(key) {
@@ -679,10 +785,29 @@
     updateHud();
   }
 
+  function travelToLocation(key) {
+    if (state.battle) return false;
+    const card = factByKey[key];
+    if (!card) return false;
+    markPlaying();
+    clearShowcase();
+    setMode("explore");
+    focusCard(card.key);
+    const anchored = state.collected.has(card.key);
+    addLine("travel", `${card.zone} reached.`);
+    if (battleCopy) {
+      battleCopy.textContent = anchored
+        ? `${card.zone} is already anchored. The ${card.title} emblem is in the SigilDex.`
+        : `${card.zone} reached. Enter the trial to beat ${card.enemy} and unlock ${card.title}.`;
+    }
+    return true;
+  }
+
   function drawFieldCard(key) {
     markPlaying();
     const card = key === "boss" ? finalBoss : factByKey[key];
     if (!card) return;
+    if (!state.battle) setMode("explore");
     if (key !== "boss" && !state.battle) focusCard(card.key);
     else updateProofCard(card, state.collected.has(card.key));
     const line = key === "boss"
@@ -695,6 +820,7 @@
 
   function exploreNext() {
     markPlaying();
+    setMode("explore");
     const next = nextRouteCard();
     if (!next) {
       addLine("archive", "Every field zone is anchored. The only distortion left is the Flattening Gate.");
@@ -716,6 +842,7 @@
     state.activeKey = card.key;
     state.battle = true;
     state.battleKey = card.key;
+    setMode("trial");
     state.enemyHpMax = 92 + state.wins * 5 + state.stage * 16;
     state.enemyHp = state.enemyHpMax;
     state.petHp = 100;
@@ -734,6 +861,7 @@
       const needed = Math.max(0, gateRequirement - anchoredProofCount());
       state.battle = false;
       state.battleKey = null;
+      setMode("explore");
       updateProofCard(finalBoss, false);
       updateHud();
       if (battleKicker) battleKicker.textContent = "sealed gate";
@@ -744,6 +872,7 @@
     }
     state.battle = true;
     state.battleKey = "boss";
+    setMode("trial");
     state.enemyHpMax = 180;
     state.enemyHp = state.enemyHpMax;
     state.petHp = 100;
@@ -781,7 +910,10 @@
     const move = moves[moveId];
     if (!move) return;
     markPlaying();
-    if (!state.battle) startBattle(state.activeKey);
+    if (!state.battle) {
+      if (battleCopy) battleCopy.textContent = "Enter the trial first; the move cards wake up once an enemy is on the field.";
+      return;
+    }
     if (state.battle) battleTurn(move.label, [factByKey[state.battleKey] || factByKey[state.activeKey] || factByKey.keppylab], move);
   }
 
@@ -792,10 +924,12 @@
     const field = `${card.key} ${card.title} ${card.zone} ${card.enemy} ${card.tags.join(" ")} ${card.receipts.join(" ")} ${card.text}`.toLowerCase();
     const tagHits = words.filter((word) => field.includes(word)).length;
     const specificity = Math.min(28, tagHits * 6);
+    const affinity = moveAffinity(move, card);
+    const finisherBonus = move?.label === "Deslopify" && state.enemyHp < state.enemyHpMax * 0.45 ? 18 : 0;
     const powerWords = move ? 0 : /(eval|proof|receipt|debug|ship|prototype|research|operator|customer|roadmap|post-training|synthetic|agent|system|contract|fundraising|model|rust|webgl|rag|vision)/i.test(text) ? 14 : 0;
     const heal = move?.heal || /(heal|recover|restore|guard|protect)/i.test(text);
     const vaguePenalty = move ? 0 : words.length < 3 ? 8 : 0;
-    const damage = Math.max(10, (move?.power || 18) + state.stage * 8 + specificity + powerWords - vaguePenalty);
+    const damage = Math.max(10, (move?.power || 18) + state.stage * 8 + specificity + affinity.bonus + finisherBonus + powerWords - vaguePenalty);
     const label = move?.label || text;
 
     if (heal) {
@@ -806,8 +940,9 @@
     } else {
       state.enemyHp -= damage;
       state.shake = 10;
+      const attackCopy = move?.copy || `${currentPet().name} used ${tagHits > 1 ? "receipt combo" : "specificity bite"}`;
       addLine("you", label);
-      addLine("trial", `${move?.copy || `${currentPet().name} used ${tagHits > 1 ? "receipt combo" : "specificity bite"}`} ${damage} damage.`);
+      addLine("trial", `${attackCopy}${affinity.bonus ? ` Zone synergy +${affinity.bonus}.` : ""}${finisherBonus ? " Finisher bonus." : ""} ${damage} damage.`);
       burst(0.7, 0.34, card.accent, 24);
     }
 
@@ -822,13 +957,14 @@
       state.petHp = 100;
       state.battle = false;
       state.battleKey = null;
+      setMode("explore");
       state.enemyHp = 0;
       addLine("trial", `${card.enemy} scrambled the signal. Your companion retreats, rests, and refills before the next try.`);
     } else {
       addLine("enemy", `${card.enemy} hits back for ${enemyDamage}.`);
     }
     if (battleCopy) battleCopy.textContent = move
-      ? `${move.label}: ${move.copy} Win to reveal the ${card.title} emblem.`
+      ? `${move.label}: ${move.copy}${affinity.bonus ? ` Zone synergy +${affinity.bonus}.` : ""}${finisherBonus ? " Finisher bonus landed." : ""} Win to reveal the ${card.title} emblem.`
       : `Signal read: ${tinyReply(text, [card])}`;
     updateHud();
   }
@@ -839,6 +975,7 @@
     state.collected.add(card.key);
     state.battle = false;
     state.battleKey = null;
+    setMode("reward", card.key);
     state.enemyHp = 0;
     state.petHp = 100;
     state.wins += 1;
@@ -859,6 +996,7 @@
       addLine("gate", "Three proof cards are anchored. The Flattening Gate is exposed.");
     }
     burst(0.5, 0.46, card.accent, 44);
+    showLootDrop(card, firstWin);
     updateHud();
     if (battleKicker) battleKicker.textContent = outcomeKicker;
     if (battleTitle) battleTitle.textContent = outcomeTitle;
@@ -869,6 +1007,12 @@
     const clean = text.trim();
     if (!clean) return;
     markPlaying();
+    if (state.mode === "reward") {
+      addLine("you", clean);
+      if (/claim|continue|next|loot|take/i.test(clean)) claimLoot();
+      else if (battleCopy) battleCopy.textContent = "Claim the proof drop first; then the model can route the next zone.";
+      return;
+    }
     const intent = readIntent(clean);
     const move = findMove(clean);
     const keys = scoreFacts(clean);
@@ -960,6 +1104,8 @@
       player: { x: 12, y: 5, tx: 12, ty: 5 },
       battle: false,
       battleKey: null,
+      mode: "explore",
+      rewardKey: null,
       enemyHp: 100,
       enemyHpMax: 100,
       petHp: 100,
@@ -978,10 +1124,26 @@
       // Reset still works if storage is unavailable.
     }
     resumeRoot?.classList.remove("is-playing");
+    setMode("explore");
     restoreTranscript();
     updateProofCard(factByKey.keppylab, false);
     updateHud();
     addLine("system", "Run reset. Prototype Garden is fresh again.");
+  }
+
+  function claimLoot() {
+    const card = activeCard();
+    if (lootDrop) lootDrop.hidden = true;
+    setMode("explore");
+    updateHud();
+    if (battleKicker) battleKicker.textContent = card.key === "boss" ? "funnel unlocked" : "emblem claimed";
+    if (battleTitle) battleTitle.textContent = card.key === "boss" ? "Signal held" : `${card.title} stored`;
+    if (battleCopy) {
+      battleCopy.textContent = card.key === "boss"
+        ? "SignalDex is complete. The hidden resume now reads as playable proof."
+        : `${card.title} is in the loot table. Pick another map location or draw the next route.`;
+    }
+    addLine("loot", `${card.title} emblem claimed.`);
   }
 
   function copyDemoIntro() {
@@ -1040,13 +1202,18 @@
   trainPetButton?.addEventListener("click", trainPet);
   runShowcaseButton?.addEventListener("click", runShowcase);
   resetGameButton?.addEventListener("click", resetGame);
+  claimLootButton?.addEventListener("click", claimLoot);
   copyDemoIntroButton?.addEventListener("click", () => {
     copyDemoIntro();
     addLine("system", "Intro copied. Send it with the hidden SignalDex link.");
   });
 
   if (!canvas) return;
-  const gl = canvas.getContext("webgl", { antialias: false, alpha: true });
+  const gl = canvas.getContext("webgl", {
+    alpha: false,
+    antialias: false,
+    powerPreference: "high-performance",
+  });
   if (!gl) {
     if (status) status.textContent = "webgl unavailable";
     return;
@@ -1109,7 +1276,11 @@
   gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
   let vertices = [];
+  let foregroundVertices = [];
   let spriteBatches = new Map();
+  let locationHitBoxes = [];
+  let pixelRatio = 1;
+  let lastFrame = 0;
 
   const sheets = {
     tileset: loadSheet("/assets/signaldex/tileset.png", 64, 64),
@@ -1156,6 +1327,7 @@
 
   function resize() {
     const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    pixelRatio = ratio;
     const nextWidth = Math.max(1, Math.floor(canvas.clientWidth * ratio));
     const nextHeight = Math.max(1, Math.floor(canvas.clientHeight * ratio));
     if (canvas.width !== nextWidth || canvas.height !== nextHeight) {
@@ -1167,16 +1339,28 @@
     height = canvas.clientHeight || nextHeight;
   }
 
-  function pushRect(x, y, w, h, color) {
+  function snapPixel(value) {
+    return Math.round(value * pixelRatio) / pixelRatio;
+  }
+
+  function appendRect(target, x, y, w, h, color) {
     const x1 = x / width * 2 - 1;
     const x2 = (x + w) / width * 2 - 1;
     const y1 = 1 - y / height * 2;
     const y2 = 1 - (y + h) / height * 2;
     const c = color.length === 3 ? [...color, 1] : color;
-    vertices.push(
+    target.push(
       x1, y1, ...c, x2, y1, ...c, x1, y2, ...c,
       x1, y2, ...c, x2, y1, ...c, x2, y2, ...c,
     );
+  }
+
+  function pushRect(x, y, w, h, color) {
+    appendRect(vertices, x, y, w, h, color);
+  }
+
+  function pushForegroundRect(x, y, w, h, color) {
+    appendRect(foregroundVertices, x, y, w, h, color);
   }
 
   function pushFrame(x, y, w, h, color, thickness = 3) {
@@ -1190,10 +1374,16 @@
     const sheet = sheets[sheetKey];
     if (!sheet || !sheet.loaded) return false;
 
-    const x1 = x / width * 2 - 1;
-    const x2 = (x + w) / width * 2 - 1;
-    const y1 = 1 - y / height * 2;
-    const y2 = 1 - (y + h) / height * 2;
+    let left = snapPixel(x);
+    let right = snapPixel(x + w);
+    let top = snapPixel(y);
+    let bottom = snapPixel(y + h);
+    if (right <= left) right = left + 1 / pixelRatio;
+    if (bottom <= top) bottom = top + 1 / pixelRatio;
+    const x1 = left / width * 2 - 1;
+    const x2 = right / width * 2 - 1;
+    const y1 = 1 - top / height * 2;
+    const y2 = 1 - bottom / height * 2;
     let u1 = sx / sheet.imageWidth;
     let u2 = (sx + sw) / sheet.imageWidth;
     const v1 = sy / sheet.imageHeight;
@@ -1229,12 +1419,27 @@
     const w = h * (sw / sh);
     const bob = Math.sin(t * 0.004 + index) * s * (active ? 0.045 : 0.018);
     const glow = collected ? [1, 0.94, 0.42, 0.24] : dim(fact.color, 0.5, 0.24);
+    locationHitBoxes.push({
+      key: fact.key,
+      x: x - w * 0.74,
+      y: y - h * 1.04 + bob,
+      w: w * 1.48,
+      h: h * 1.34,
+    });
     pushRect(x - w * 0.62, y + s * 0.2, w * 1.24, s * 0.16, [0.02, 0.03, 0.05, 0.38]);
     pushRect(x - w * 0.72, y - h * 0.94 + bob, w * 1.44, h * 1.08, glow);
     if (!pushSprite(sheet, x - w * 0.5, y - h * 0.85 + bob, w, h, 0, 0, sw, sh)) {
       pushTile(8 + (index % 4), x - s * 0.34, y - s * 0.42 + bob, s * 0.68);
     }
     if (active) pushFrame(x - w * 0.68, y - h * 0.94 + bob, w * 1.36, h * 1.06, [...fact.accent, 0.9], 3);
+    if (collected) {
+      const flagX = x + w * 0.28;
+      const flagY = y - h * 1.04 + bob;
+      const pole = Math.max(2, s * 0.04);
+      pushForegroundRect(flagX, flagY, pole, h * 0.56, [0.04, 0.06, 0.1, 0.95]);
+      pushForegroundRect(flagX + pole, flagY, w * 0.38, h * 0.18, [...fact.accent, 0.95]);
+      pushForegroundRect(flagX + pole, flagY + h * 0.18, w * 0.22, h * 0.12, dim(fact.accent, 0.72, 0.9));
+    }
   }
 
   function drawSpriteBatches() {
@@ -1266,6 +1471,22 @@
       ? height - dockReserve + Math.min(18, scale * 0.25) - scale * 9.85
       : topReserve + playHeight * 0.5 - scale * 4.9;
     return [originX + mx * scale, originY + my * scale, scale];
+  }
+
+  function canvasPoint(event) {
+    const rect = canvas.getBoundingClientRect();
+    return [
+      (event.clientX - rect.left) * (width / rect.width),
+      (event.clientY - rect.top) * (height / rect.height),
+    ];
+  }
+
+  function locationAtPoint(x, y) {
+    if (state.battle) return null;
+    return locationHitBoxes
+      .slice()
+      .reverse()
+      .find((box) => x >= box.x && x <= box.x + box.w && y >= box.y && y <= box.y + box.h) || null;
   }
 
   function dim(color, amount = 0.6, alpha = 1) {
@@ -1423,10 +1644,15 @@
   }
 
   function render(t) {
+    requestAnimationFrame(render);
+    if (lastFrame && t - lastFrame < 32) return;
+    lastFrame = t;
     state.time = t;
     resize();
     vertices = [];
+    foregroundVertices = [];
     spriteBatches = new Map();
+    locationHitBoxes = [];
     gl.clearColor(0.02, 0.025, 0.05, 1);
     gl.clear(gl.COLOR_BUFFER_BIT);
     if (state.battle) drawBattle(t);
@@ -1442,12 +1668,37 @@
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.DYNAMIC_DRAW);
     gl.drawArrays(gl.TRIANGLES, 0, vertices.length / 6);
     drawSpriteBatches();
-    requestAnimationFrame(render);
+    if (foregroundVertices.length) {
+      gl.useProgram(program);
+      gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+      gl.enableVertexAttribArray(positionLocation);
+      gl.enableVertexAttribArray(colorLocation);
+      gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 24, 0);
+      gl.vertexAttribPointer(colorLocation, 4, gl.FLOAT, false, 24, 8);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(foregroundVertices), gl.DYNAMIC_DRAW);
+      gl.drawArrays(gl.TRIANGLES, 0, foregroundVertices.length / 6);
+    }
+    gl.flush();
   }
 
   loadProgress();
+  setMode("explore");
   maybeEvolve();
   updateProofCard(factByKey.keppylab, state.collected.has("keppylab"));
   updateHud();
+  canvas.addEventListener("pointermove", (event) => {
+    const [x, y] = canvasPoint(event);
+    canvas.style.cursor = locationAtPoint(x, y) ? "pointer" : "default";
+  });
+  canvas.addEventListener("pointerleave", () => {
+    canvas.style.cursor = "default";
+  });
+  canvas.addEventListener("click", (event) => {
+    const [x, y] = canvasPoint(event);
+    const hit = locationAtPoint(x, y);
+    if (!hit) return;
+    event.preventDefault();
+    travelToLocation(hit.key);
+  });
   requestAnimationFrame(render);
 }());

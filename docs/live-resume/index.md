@@ -37,12 +37,19 @@ search:
     </div>
 
     <div class="journey-map" aria-label="journey zones">
-      <div class="journey-map-title">Field Deck</div>
-      <button type="button" data-zone="stemuli"><span>01</span>District Arcade</button>
-      <button type="button" data-zone="corider"><span>02</span>Tool Contract Cave</button>
-      <button type="button" data-zone="evals"><span>03</span>Regression Reef</button>
-      <button type="button" data-zone="startup"><span>04</span>Founder Ferry</button>
-      <button type="button" data-zone="older"><span>05</span>Archive Ruins</button>
+      <div class="journey-map-title">Route Tracker</div>
+      <button type="button" data-zone="keppylab"><span>01</span>Prototype Garden</button>
+      <button type="button" data-zone="stemuli"><span>02</span>District Arcade</button>
+      <button type="button" data-zone="corider"><span>03</span>Tool Contract Cave</button>
+      <button type="button" data-zone="evals"><span>04</span>Regression Reef</button>
+      <button type="button" data-zone="orb"><span>05</span>Tutor Volcano</button>
+      <button type="button" data-zone="labs"><span>06</span>Frontier Observatory</button>
+      <button type="button" data-zone="startup"><span>07</span>Founder Ferry</button>
+      <button type="button" data-zone="systems"><span>08</span>Stack Foundry</button>
+      <button type="button" data-zone="pegasys"><span>09</span>Medical Circuit</button>
+      <button type="button" data-zone="dolly"><span>10</span>Payout Pier</button>
+      <button type="button" data-zone="ai2"><span>11</span>Vision Lab</button>
+      <button type="button" data-zone="older"><span>12</span>Archive Ruins</button>
       <button type="button" data-zone="boss"><span>??</span>Flattening Gate</button>
     </div>
 
@@ -76,10 +83,21 @@ search:
 
       <div class="sigildex">
         <div>
-          <span>emblems</span>
+          <span>loot table</span>
           <strong id="dex-count">0 collected</strong>
         </div>
         <div id="sigildex-list" class="sigildex-list" aria-label="collected proof cards"></div>
+      </div>
+    </div>
+
+    <div id="loot-drop" class="loot-drop" aria-live="polite" hidden>
+      <div class="loot-drop-card">
+        <span id="loot-kicker">proof drop</span>
+        <strong id="loot-title">Emblem acquired</strong>
+        <em id="loot-rarity">rare resume relic</em>
+        <p id="loot-copy">Specific proof recovered.</p>
+        <div id="loot-receipts" class="loot-receipts"></div>
+        <button type="button" id="claim-loot">claim</button>
       </div>
     </div>
 
@@ -93,11 +111,11 @@ search:
           <span><i id="pet-hp"></i></span>
           <span><i id="enemy-hp"></i></span>
         </div>
-        <p id="battle-copy">Field cards scout zones. HP only matters inside trials and refills before every fight.</p>
+        <p id="battle-copy">Click a map location, enter its trial, win the emblem, and turn the rumor into proof.</p>
       </div>
 
       <form id="tiny-chat" class="tiny-chat">
-        <input id="tiny-input" name="question" autocomplete="off" placeholder="ask, scout, or type a move" aria-label="Ask the tiny resume model">
+        <input id="tiny-input" name="question" autocomplete="off" placeholder="ask about a zone or type a move in battle" aria-label="Ask the tiny resume model">
         <button type="submit">cast</button>
       </form>
 

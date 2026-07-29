@@ -529,6 +529,66 @@ body:has(.kl-hero-lead) .md-content__inner > h1:first-child {
   line-height: 1.55;
 }
 
+.kl-c-compare {
+  max-width: 44rem;
+  margin: 1.5rem 0 0;
+  padding: 1rem;
+  border: 1px solid var(--kl-border);
+  border-radius: 8px;
+  background: var(--kl-wash);
+}
+
+.kl-c-compare figcaption {
+  margin-bottom: 0.85rem;
+}
+
+.kl-c-compare figcaption span {
+  display: block;
+  color: var(--kl-amber);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.kl-c-compare figcaption strong {
+  color: var(--kl-ink);
+  font-size: 1rem;
+}
+
+.kl-c-compare .gng-table {
+  margin: 0;
+}
+
+/* The label column reads as a row header, so it stays left and unemphasized
+   while the two agent columns line up for comparison. */
+.kl-c-compare .gng-table th:not(:first-child),
+.kl-c-compare .gng-table td:not(:first-child) {
+  padding-right: 0;
+  text-align: right;
+}
+
+/* The theme centers unstyled body cells; the label column reads as a row
+   header and must stay flush left. */
+.kl-c-compare .gng-table th:first-child,
+.kl-c-compare .gng-table td:first-child {
+  color: var(--kl-muted);
+  text-align: left;
+}
+
+.kl-c-compare > p {
+  margin: 0.85rem 0 0;
+  color: var(--kl-muted);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 34rem) {
+  .kl-c-compare .gng-table td,
+  .kl-c-compare .gng-table th {
+    font-size: 0.78rem;
+  }
+}
+
 .kl-c-scorecard {
   max-width: 40rem;
   margin: 1.5rem 0 0;

@@ -135,6 +135,77 @@ than the week after it starts touching customers.
 pilot ends with one of these, run against your work instead of a benchmark.
 </p>
 
+### So we swapped in a frontier model
+
+<p class="kl-c-prose">
+The obvious next move, and the one most teams make: throw a better model at it. I pointed Claude
+Opus 5 at the identical 250 messages, scored the same way, and ran the harness again. Accuracy went
+from 77.2% to 80.8%. On most dashboards that is the end of the story — a win, write it up.
+</p>
+
+<p class="kl-c-prose">
+It isn't a win. Three and a half points on 250 cases is inside the noise: the difference carries a
+95% interval of roughly &minus;3.5 to +10.7 points. You would need something like two thousand cases
+to tell these two apart on accuracy. A team that reported "we upgraded and accuracy improved" would
+be reporting a coin flip.
+</p>
+
+<figure class="kl-c-compare">
+  <figcaption>
+    <span>Same 250 cases, same scorer</span>
+    <strong>What the upgrade actually bought</strong>
+  </figcaption>
+  <table class="gng-table">
+    <thead>
+      <tr>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">Baseline classifier</th>
+        <th scope="col">Claude Opus 5</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Pass rate</td>
+        <td>77.2% <span class="gng-ci">[71.6%, 82.0%]</span></td>
+        <td>80.8% <span class="gng-ci">[75.5%, 85.2%]</span></td>
+      </tr>
+      <tr>
+        <td>Calibration error</td>
+        <td class="gng-under">0.42</td>
+        <td class="gng-ok">0.06</td>
+      </tr>
+      <tr>
+        <td>Handled automatically at ~98% precision</td>
+        <td class="gng-under">14%</td>
+        <td class="gng-ok">48%</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Accuracy is a wash. The share of the queue you can safely hand over more than triples.</p>
+</figure>
+
+<p class="kl-c-prose">
+The gain is in the bottom two rows, and neither is accuracy. The baseline's confidence score was
+close to meaningless — it would say 0.11 and be right 61% of the time. Claude's is honest almost to
+the decimal: it says 0.92 and is right 93% of the time. Honest confidence is what lets you draw a
+line and route everything below it to a person. So the same measurement that found no provable
+accuracy gain found a 3.4&times; increase in how much of the queue you can automate at the same
+error rate.
+</p>
+
+<p class="kl-c-prose">
+That is the entire argument for measuring properly. The number everyone reaches for moved by an
+amount that means nothing. The number that decides how many hours actually leave your week moved by
+a factor of three. You cannot see either one without the interval and the coverage curve, and you
+would have shipped the wrong conclusion about both.
+</p>
+
+<p class="kl-c-note">
+Neither run cleared a 95% bar, so neither ships unattended &mdash; and the honest report says so.
+The closest Claude gets is 98.3% precision on 48% of cases, where the lower bound lands at 94.1%
+and misses by nine tenths of a point. Very likely good enough. Not yet provable on 250 cases.
+</p>
+
 ## How It Works
 
 <ol class="kl-c-steps">

@@ -145,7 +145,7 @@ from 77.2% to 81.6%. On most dashboards that is the end of the story: a win, wri
 
 <p class="kl-c-prose">
 But because both models saw the same cases, the comparison can be tested properly, and
-the honest read on those four and a half points is that they're inside the noise: the difference
+the honest read on those 4.4 points is that they're inside the noise: the difference
 carries a 95% interval of &minus;0.8 to +9.6 points and fails significance at p&nbsp;=&nbsp;0.14.
 Roughly seven hundred cases would be needed to say something meaningful. A team reporting "we upgraded and accuracy
 improved" would be reporting a coin flip. The same model rerun on the same 250 cases scored

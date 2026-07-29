@@ -13,13 +13,13 @@ A common situation: fifty real cases went through our agent, forty-seven came ba
 
 But the 95% confidence interval on 47/50 runs from **83.8% to 97.9%**.
 
-So imagine in our situation the number you'd agreed to hit was 90%. You are in the awkward position of having neither hit or missed your target. The truth is you still don't know, and what you should be saying out loud is that you need more cases. But it would be much better if your eval tool could tell you that up front. Sometimes it feels impossible to illustrate this point without a clever report.
+So imagine in our situation the number you'd agreed to hit was 90%. You are in the awkward position of having neither hit nor missed your target. The truth is you still don't know, and what you should be saying out loud is that you need more cases. But it would be much better if your eval tool could tell you that up front. Sometimes it feels impossible to illustrate this point without a clever report.
 
 <!-- more -->
 
 ## Nobody has ten thousand cases
 
-At face value, the techniques in evaluation papers assume you have thousands of examples. Pilots, and many use production use cases, don't work that way. You get however many cases somebody was willing to sit down and label by hand; forty, maybe eighty, two hundred and fifty in a good batch.
+At face value, the techniques in evaluation papers assume you have thousands of examples. Pilots, and many production use cases, don't work that way. You get however many cases somebody was willing to sit down and label by hand; forty, maybe eighty, two hundred and fifty in a good batch.
 
 Down here, the interval is wide enough to flip a decision:
 
@@ -101,7 +101,7 @@ unattended step.
 
 That's the verdict on the Banking77 baseline. Not "77% accuracy, charts attached." A recommendation with its reasoning stapled on, in language an operator who doesn't write code can actually act on.
 
-Five verdicts exist and only two of them mean ship. My favorite is `INSUFFICIENT EVIDENCE`: "the estimate looks fine, your sample can't hold it up, and here's roughly how many more cases would. Week two of a pilot", that's what an honest consultant tells you. I've never once seen a dashboard render it.
+Five verdicts exist and only two of them mean ship. My favorite is `INSUFFICIENT EVIDENCE`: the estimate looks fine, your sample can't hold it up, and here's roughly how many more cases would. Week two of a pilot, that's what an honest consultant tells you. I've never once seen a dashboard render it.
 
 ## The tool
 

@@ -140,16 +140,16 @@ pilot ends with one of these, run against your work instead of a benchmark.
 <p class="kl-c-prose">
 The obvious next move, and the one most teams make: throw a better model at it. I pointed Claude
 Opus 5 at the identical 250 messages, scored the same way, and ran the harness again. Accuracy went
-from 77.2% to 81.6%. On most dashboards that is the end of the story — a win, write it up.
+from 77.2% to 81.6%. On most dashboards that is the end of the story: a win, write it up.
 </p>
 
 <p class="kl-c-prose">
-It isn't a win. Because both models saw the same cases, the comparison can be tested properly, and
+But because both models saw the same cases, the comparison can be tested properly, and
 the honest read on those four and a half points is that they're inside the noise: the difference
 carries a 95% interval of &minus;0.8 to +9.6 points and fails significance at p&nbsp;=&nbsp;0.14.
-Roughly seven hundred cases would be needed to settle it. A team reporting "we upgraded and accuracy
-improved" would be reporting a coin flip — and the same model rerun on the same 250 cases scored
-80.8% one day and 81.6% the next, so a fifth of the "improvement" was the model failing to be
+Roughly seven hundred cases would be needed to say something meaningful. A team reporting "we upgraded and accuracy
+improved" would be reporting a coin flip. The same model rerun on the same 250 cases scored
+80.8% one day and 81.6% the next, so a fifth of the reported "improvement" was the model failing to be
 deterministic.
 </p>
 
@@ -197,6 +197,7 @@ error rate.
 </p>
 
 <p class="kl-c-prose">
+If we measure and report properly, we can get a better understanding of the decision surface we are dealing with. 
 That is the entire argument for measuring properly. The number everyone reaches for moved by an
 amount that means nothing. The number that decides how many hours actually leave your week moved by
 a factor of three. You cannot see either one without the interval and the coverage curve, and you

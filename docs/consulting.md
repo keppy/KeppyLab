@@ -140,14 +140,17 @@ pilot ends with one of these, run against your work instead of a benchmark.
 <p class="kl-c-prose">
 The obvious next move, and the one most teams make: throw a better model at it. I pointed Claude
 Opus 5 at the identical 250 messages, scored the same way, and ran the harness again. Accuracy went
-from 77.2% to 80.8%. On most dashboards that is the end of the story — a win, write it up.
+from 77.2% to 81.6%. On most dashboards that is the end of the story — a win, write it up.
 </p>
 
 <p class="kl-c-prose">
-It isn't a win. Three and a half points on 250 cases is inside the noise: the difference carries a
-95% interval of roughly &minus;3.5 to +10.7 points. You would need something like two thousand cases
-to tell these two apart on accuracy. A team that reported "we upgraded and accuracy improved" would
-be reporting a coin flip.
+It isn't a win. Because both models saw the same cases, the comparison can be tested properly, and
+the honest read on those four and a half points is that they're inside the noise: the difference
+carries a 95% interval of &minus;0.8 to +9.6 points and fails significance at p&nbsp;=&nbsp;0.14.
+Roughly seven hundred cases would be needed to settle it. A team reporting "we upgraded and accuracy
+improved" would be reporting a coin flip — and the same model rerun on the same 250 cases scored
+80.8% one day and 81.6% the next, so a fifth of the "improvement" was the model failing to be
+deterministic.
 </p>
 
 <figure class="kl-c-compare">
@@ -167,7 +170,7 @@ be reporting a coin flip.
       <tr>
         <td>Pass rate</td>
         <td>77.2% <span class="gng-ci">[71.6%, 82.0%]</span></td>
-        <td>80.8% <span class="gng-ci">[75.5%, 85.2%]</span></td>
+        <td>81.6% <span class="gng-ci">[76.3%, 85.9%]</span></td>
       </tr>
       <tr>
         <td>Calibration error</td>
@@ -177,7 +180,7 @@ be reporting a coin flip.
       <tr>
         <td>Handled automatically at ~98% precision</td>
         <td class="gng-under">14%</td>
-        <td class="gng-ok">48%</td>
+        <td class="gng-ok">50%</td>
       </tr>
     </tbody>
   </table>
@@ -189,7 +192,7 @@ The gain is in the bottom two rows, and neither is accuracy. The baseline's conf
 close to meaningless — it would say 0.11 and be right 61% of the time. Claude's is honest almost to
 the decimal: it says 0.92 and is right 93% of the time. Honest confidence is what lets you draw a
 line and route everything below it to a person. So the same measurement that found no provable
-accuracy gain found a 3.4&times; increase in how much of the queue you can automate at the same
+accuracy gain found a 3.6&times; increase in how much of the queue you can automate at the same
 error rate.
 </p>
 
@@ -202,8 +205,8 @@ would have shipped the wrong conclusion about both.
 
 <p class="kl-c-note">
 Neither run cleared a 95% bar, so neither ships unattended &mdash; and the honest report says so.
-The closest Claude gets is 98.3% precision on 48% of cases, where the lower bound lands at 94.1%
-and misses by nine tenths of a point. Very likely good enough. Not yet provable on 250 cases.
+The closest Claude gets is 97.6% precision on half the cases, where the lower bound lands at 93.2%
+and misses the target by under two points. Very likely good enough. Not yet provable on 250 cases.
 </p>
 
 ## How It Works

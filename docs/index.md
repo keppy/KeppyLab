@@ -8,57 +8,78 @@ hide:
 
 <section class="kl-hero kl-hero-lead">
   <div class="kl-hero-copy">
-    <p class="kl-eyebrow">Applied AI consulting</p>
-    <h1>Verifiable agents for companies that aren't AI companies.</h1>
+    <p class="kl-eyebrow">a research bench, open to the night air</p>
+    <h1>Small strange machines for understanding software — and for knowing when software is lying to you.</h1>
     <p class="kl-lede">
-      A production agent on your actual workflow in 2–4 weeks, with an eval harness included,
-      so you know whether to trust it.
+      KeppyLab is the open workbench of James Dominguez: evaluation harnesses, RL training
+      loops, knowledge graphs for rare disease, COBOL archaeology. Everything here is
+      built in the open, scored against real cases, and released on GitHub.
     </p>
     <div class="kl-actions">
-      <a class="kl-button kl-button-primary" href="consulting/">See the consulting practice</a>
-      <a class="kl-button kl-button-secondary" href="mailto:james@keppylab.com?subject=Scoping%20call%20—%20AI%20agent%20pilot">Book a scoping call</a>
+      <a class="kl-button kl-button-primary" href="https://github.com/keppy">github.com/keppy</a>
+      <a class="kl-button kl-button-secondary" href="blog/">Read the writings</a>
     </div>
   </div>
 </section>
 
-## How The Pilot Works
+## The Work
 
 <div class="kl-feature-grid">
   <article>
-    <h3>One workflow, scoped</h3>
-    <p>We pick the single workflow with the best effort-to-value ratio, then quote scope and timeline in writing. No hourly meter.</p>
+    <h3><a href="https://github.com/keppy/gonogo">gonogo</a></h3>
+    <p>The eval harness from real deployments, open sourced. Scores an agent on your actual cases and returns a deployment decision — including "not enough evidence yet." Numbers instead of vibes.</p>
   </article>
   <article>
-    <h3>An agent on your existing tools</h3>
-    <p>Weekly demos on your actual data, wired into the systems you already run; not a slide deck, and not mock data.</p>
+    <h3><a href="https://github.com/keppy/thomas">thomas</a></h3>
+    <p><code>thomas.train()</code> — a training harness. Case → reward → train: take a Case set and a score function, get a baseline card, run the loop, compare before and after. Pretrain on Modal GPUs or post-train with LoRA RL.</p>
   </article>
   <article>
-    <h3>An eval harness by default</h3>
-    <p>An automated test suite that scores the agent against your real cases, so you know its accuracy before you rely on it.</p>
+    <h3><a href="https://github.com/keppy/ox">ox</a></h3>
+    <p>The hivemind for AI coding agents — persistent team context recorded once and recalled across agents, machines, and teammates.</p>
   </article>
   <article>
-    <h3>An honest recommendation</h3>
-    <p>A plain-English score report and a go/no-go call, including "don't automate this" when that's the truthful answer.</p>
+    <h3><a href="https://github.com/keppy/cotfaith">cotfaith</a></h3>
+    <p>Chain-of-thought (un)faithfulness, study one: hint-following and confession rates on Qwen3-1.7B. Pre-registered decision log, blind-labeled judge validation, byte-exact run artifacts.</p>
   </article>
 </div>
 
-[See the full engagement shapes](consulting/){ .kl-button .kl-button-secondary }
+## Older Haunts
 
-## From The Lab
+<div class="kl-feature-grid">
+  <article>
+    <h3><a href="describe/">describe</a> / <a href="https://github.com/keppy/MCPM">MCPM</a></h3>
+    <p>Speak systems into existence. An MCP capability manager: discover servers, write client config, read the capability map back as resources and prompts.</p>
+  </article>
+  <article>
+    <h3><a href="https://github.com/keppy/ds4">ds4</a></h3>
+    <p>A DeepSeek 4 Flash local inference engine for Metal. Small models on your own silicon.</p>
+  </article>
+  <article>
+    <h3><a href="https://github.com/keppy/cobol-reporter">cobol-reporter</a></h3>
+    <p>RAG and report generation for understanding COBOL systems — sixty years of gravity, interrogated in plain English.</p>
+  </article>
+  <article>
+    <h3><a href="https://github.com/keppy/disease-lab">disease-lab</a></h3>
+    <p>Knowledge-graph AI for rare disease literature and discovery workflows, built during a rare-disease hackathon.</p>
+  </article>
+  <article>
+    <h3><a href="https://github.com/keppy/WorldEnder.ai">WorldEnder.ai</a></h3>
+    <p>RAG-powered text adventures with coherent long-horizon world state. Predict the end of the world.</p>
+  </article>
+  <article>
+    <h3><a href="https://github.com/keppy/recurse">recurse</a></h3>
+    <p>A numbered visual series that remembers itself: plan → draw → render → reflect → remember.</p>
+  </article>
+</div>
 
-KeppyLab builds small, sharp AI systems: developer tools, research infrastructure, agent evaluation workflows, and experiments that make software easier to operate through language.
+## From The Lab Notebook
 
-[gonogo](https://github.com/keppy/gonogo) - The eval harness from our implementations, open sourced. Scores an agent on your real cases and returns a deployment decision, including "not enough evidence yet."
+Recent writings on evals, fine-tuning, and shipping AI before it's ready:
 
-[cobol-reporter](https://github.com/keppy/cobol-reporter) - RAG and report generation for understanding COBOL systems.
-
-[Disease Lab](https://github.com/keppy/disease-lab) - Knowledge graph AI for rare disease literature and discovery workflows.
-
-[WorldEnder.ai](https://www.github.com/keppy/WorldEnder.ai) - RAG-powered text adventures with coherent long-horizon world state.
-
-[describe](describe/) - An MCP capability manager: discover servers, write client config, read the capability map back as resources and prompts.
-
-## Stay In The Loop
+- [Your agent eval is lying to you](blog/posts/your-agent-eval-is-lying-to-you.md)
+- [Fine-tuning Pythia](blog/posts/fine-tuning-pythia.md)
+- [The rare disease hackathon](blog/posts/rare-diseases-hackathon.md)
+- [I demoed too early](blog/posts/i-demoed-too-early.md)
 
 <div class="kl-newsletter">
   <form action="https://app.loops.so/api/newsletter-form/clw02o2mi010kgpl3nac0bbiv" method="POST">
@@ -71,4 +92,4 @@ KeppyLab builds small, sharp AI systems: developer tools, research infrastructur
   </form>
 </div>
 
-[@yok0zuna](https://twitter.com/yok0zuna) | [GitHub](https://github.com/keppy) | [LinkedIn](https://www.linkedin.com/in/james-dominguez-5b342b226/) | [Hugging Face](https://huggingface.co/keppy)
+[@yok0zuna](https://twitter.com/yok0zuna) | [GitHub](https://github.com/keppy) | [Hugging Face](https://huggingface.co/keppy) | [Contact](contact/)

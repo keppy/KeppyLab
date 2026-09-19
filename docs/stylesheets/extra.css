@@ -1,24 +1,75 @@
 :root {
-  --md-primary-fg-color: #111827;
-  --md-primary-fg-color--light: #374151;
-  --md-primary-fg-color--dark: #030712;
-  --md-accent-fg-color: #0f766e;
-  --kl-ink: #111827;
-  --kl-muted: #4b5563;
-  --kl-border: #d1d5db;
-  --kl-wash: #f8fafc;
-  --kl-teal: #0f766e;
-  --kl-amber: #b45309;
+  /* Weird & eerie dark theme: near-black slate, bone text, phosphor violet.
+     Ink is now the light foreground; wash is the raised dark surface. */
+  --md-primary-fg-color: #0b0b10;
+  --md-primary-fg-color--light: #16161f;
+  --md-primary-fg-color--dark: #050508;
+  --md-accent-fg-color: #a78bfa;
+  --md-default-bg-color: #0b0b10;
+  --kl-ink: #e8e4dd;
+  --kl-muted: #9d97a8;
+  --kl-border: #2a2733;
+  --kl-wash: #131219;
+  --kl-teal: #5eead4;
+  --kl-amber: #fbbf24;
+  --kl-violet: #a78bfa;
+  --kl-void: #050508;
+}
+
+/* Instrument Serif carries display type; mono carries the machine voice. */
+.md-typeset {
+  font-feature-settings: "liga" 1;
 }
 
 .md-typeset h1,
 .md-typeset h2,
-.md-typeset h3 {
-  letter-spacing: 0;
+.md-typeset h3,
+.kl-eyebrow,
+.kl-c-offer-tag,
+.gng-verdict {
+  font-family: "Instrument Serif", "Georgia", serif;
+  font-weight: 400;
 }
 
-.md-typeset h1 {
-  font-weight: 700;
+.md-typeset code,
+.md-typeset pre,
+.md-typeset kbd {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+}
+
+.kl-eyebrow {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--kl-violet);
+}
+
+body {
+  background: var(--kl-void);
+}
+
+/* A faint scanline breath over the whole page. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(167, 139, 250, 0.025) 0px,
+    rgba(167, 139, 250, 0.025) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+.md-typeset a {
+  color: var(--kl-teal);
+}
+
+.md-typeset a:hover {
+  color: var(--kl-violet);
 }
 
 .kl-hero {
@@ -41,10 +92,10 @@
 
 .kl-eyebrow {
   margin: 0;
-  color: var(--kl-teal);
-  font-size: 0.75rem;
+  color: var(--kl-violet);
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -74,7 +125,7 @@
 
 .kl-button-primary {
   background: var(--kl-ink);
-  color: #ffffff !important;
+  color: var(--kl-void) !important;
 }
 
 .kl-button-secondary {
@@ -87,7 +138,7 @@
   padding: 1rem;
   border: 1px solid var(--kl-border);
   border-radius: 8px;
-  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 55%, #fff7ed 100%);
+  background: linear-gradient(135deg, #131219 0%, #171522 55%, #1c1428 100%);
 }
 
 .kl-product-logo {
@@ -107,7 +158,7 @@
   padding: 1rem;
   border: 1px solid var(--kl-border);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(19, 18, 25, 0.82);
 }
 
 .kl-map span {
@@ -181,8 +232,8 @@
   padding: 0.7rem 1rem;
   border: 0;
   border-radius: 8px;
-  background: var(--kl-teal);
-  color: #ffffff;
+  background: var(--kl-violet);
+  color: var(--kl-void);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -487,7 +538,7 @@ body:has(.kl-hero-lead) .md-content__inner > h1:first-child {
   padding: 1.15rem;
   border: 1px solid var(--kl-border);
   border-radius: 8px;
-  background: #ffffff;
+  background: var(--kl-wash);
 }
 
 /* The Pilot is the headline offer, so it spans the row. */
@@ -654,7 +705,7 @@ body:has(.kl-hero-lead) .md-content__inner > h1:first-child {
 
 .md-typeset .kl-c-scoretable td {
   padding: 0.6rem 0.5rem 0.6rem 0;
-  border-bottom: 1px solid rgba(209, 213, 219, 0.55);
+  border-bottom: 1px solid rgba(42, 39, 51, 0.9);
   color: var(--kl-ink);
   font-size: 0.85rem;
   vertical-align: middle;
@@ -673,7 +724,7 @@ body:has(.kl-hero-lead) .md-content__inner > h1:first-child {
   margin-right: 0.5rem;
   overflow: hidden;
   border-radius: 999px;
-  background: rgba(17, 24, 39, 0.12);
+  background: rgba(232, 228, 221, 0.14);
   vertical-align: middle;
 }
 
@@ -698,18 +749,18 @@ body:has(.kl-hero-lead) .md-content__inner > h1:first-child {
 }
 
 .kl-c-flag-ok {
-  background: rgba(15, 118, 110, 0.12);
-  color: #0f766e;
+  background: rgba(94, 234, 212, 0.12);
+  color: #5eead4;
 }
 
 .kl-c-flag-warn {
-  background: rgba(180, 83, 9, 0.12);
-  color: #b45309;
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
 }
 
 .kl-c-flag-stop {
-  background: rgba(17, 24, 39, 0.1);
-  color: #374151;
+  background: rgba(232, 228, 221, 0.1);
+  color: #9d97a8;
 }
 
 .kl-c-scorecard > p {
@@ -784,7 +835,7 @@ body:has(.kl-hero-lead) .md-content__inner > h1:first-child {
   padding: 1.5rem;
   border: 1px solid var(--kl-border);
   border-radius: 8px;
-  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 55%, #fff7ed 100%);
+  background: linear-gradient(135deg, #131219 0%, #171522 55%, #1c1428 100%);
 }
 
 .md-typeset .kl-c-cta h2 {
@@ -860,14 +911,14 @@ body:has(.kl-hero-lead) .md-content__inner > h1:first-child {
   padding: 1.25rem;
   border: 1px solid var(--gng-border);
   border-radius: 8px;
-  background: #fff;
+  background: var(--kl-wash);
   color: var(--gng-ink);
 }
-.gng[data-verdict="automate"] { --gng-accent: #0f766e; }
-.gng[data-verdict="automate-with-review"] { --gng-accent: #0f766e; }
-.gng[data-verdict="assist-only"] { --gng-accent: #b45309; }
-.gng[data-verdict="do-not-automate"] { --gng-accent: #9f1239; }
-.gng[data-verdict="insufficient-evidence"] { --gng-accent: #4b5563; }
+.gng[data-verdict="automate"] { --gng-accent: #5eead4; }
+.gng[data-verdict="automate-with-review"] { --gng-accent: #5eead4; }
+.gng[data-verdict="assist-only"] { --gng-accent: #fbbf24; }
+.gng[data-verdict="do-not-automate"] { --gng-accent: #fb7185; }
+.gng[data-verdict="insufficient-evidence"] { --gng-accent: #9d97a8; }
 .gng-head { padding-left: .75rem; border-left: 3px solid var(--gng-accent); }
 .gng-task { margin: 0; color: var(--gng-muted); font-size: .72rem; font-weight: 700;
   letter-spacing: .04em; text-transform: uppercase; }
@@ -902,7 +953,7 @@ body:has(.kl-hero-lead) .md-content__inner > h1:first-child {
 .gng-ok { color: var(--gng-ok); }
 .gng-under { color: var(--gng-under); }
 .gng-bar { display: inline-block; width: 2.75rem; height: .35rem; margin-right: .45rem;
-  overflow: hidden; border-radius: 999px; background: rgba(17,24,39,.12);
+  overflow: hidden; border-radius: 999px; background: rgba(232,228,221,.14);
   vertical-align: middle; }
 .gng-bar i { display: block; width: var(--pct, 0%); height: 100%; background: var(--gng-accent); }
 .gng-caveats { margin: 1.25rem 0 0; }

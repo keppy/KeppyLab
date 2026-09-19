@@ -1,27 +1,32 @@
 site_name: KeppyLab
 site_url: https://www.keppylab.com
-site_description: KeppyLab builds AI-native tools for composing, operating, and understanding software systems.
+site_description: KeppyLab is the research bench of James Dominguez — open source evals, RL training harnesses, and small strange machines for understanding software systems.
 theme:
   name: material
   icon:
     logo: octicons/north-star-24
   favicon: assets/KeppyLab.png
   palette:
+    scheme: slate
     primary: black
-    accent: teal
+    accent: deep-purple
+  font:
+    text: Instrument Serif
+    code: IBM Plex Mono
   features:
     - navigation.tabs
     - content.code.copy
   custom_dir: overrides
 nav:
   - Home: "index.md"
-  - Consulting: "consulting.md"
   - "Writings & Research":
     - "blog/index.md"
   - Contact: "contact.md"
-# describe stays published and linked from the home page, but is no longer a
-# top-level tab now that consulting leads the site. live-resume is a hidden page.
+# The lab leads with the work. consulting stays published (the one-pager and
+# old links point at /consulting/) but is no longer offered in the nav.
+# describe and live-resume are hidden pages.
 not_in_nav: |
+  consulting.md
   describe.md
   live-resume/index.md
 plugins:

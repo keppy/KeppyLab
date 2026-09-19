@@ -1,6 +1,6 @@
 site_name: KeppyLab
 site_url: https://www.keppylab.com
-site_description: KeppyLab is the research bench of James Dominguez — open source evals, RL training harnesses, and small strange machines for understanding software systems.
+site_description: KeppyLab is the research bench of github.com/keppy — open source evals, RL training harnesses, and small strange machines for understanding software systems.
 theme:
   name: material
   icon:

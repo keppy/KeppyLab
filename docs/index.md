@@ -8,10 +8,10 @@ hide:
 
 <section class="kl-hero kl-hero-lead">
   <div class="kl-hero-copy">
-    <p class="kl-eyebrow">a research bench, open to the night air</p>
+    <p class="kl-eyebrow">the workbench is public</p>
     <h1>Small strange machines for understanding software — and for knowing when software is lying to you.</h1>
     <p class="kl-lede">
-      KeppyLab is the open workbench of James Dominguez: evaluation harnesses, RL training
+      KeppyLab is the research bench of github.com/keppy: evaluation harnesses, RL training
       loops, knowledge graphs for rare disease, COBOL archaeology. Everything here is
       built in the open, scored against real cases, and released on GitHub.
     </p>
@@ -34,12 +34,12 @@ hide:
     <p><code>thomas.train()</code> — a training harness. Case → reward → train: take a Case set and a score function, get a baseline card, run the loop, compare before and after. Pretrain on Modal GPUs or post-train with LoRA RL.</p>
   </article>
   <article>
-    <h3><a href="https://github.com/keppy/ox">ox</a></h3>
-    <p>The hivemind for AI coding agents — persistent team context recorded once and recalled across agents, machines, and teammates.</p>
-  </article>
-  <article>
     <h3><a href="https://github.com/keppy/cotfaith">cotfaith</a></h3>
     <p>Chain-of-thought (un)faithfulness, study one: hint-following and confession rates on Qwen3-1.7B. Pre-registered decision log, blind-labeled judge validation, byte-exact run artifacts.</p>
+  </article>
+  <article>
+    <h3><a href="https://github.com/keppy/recurse">recurse</a></h3>
+    <p>A numbered visual series that remembers itself: plan → draw → render → reflect → remember. Each entry inherits a JSON motif memory from the one before it, and continuity is over images, not intentions.</p>
   </article>
 </div>
 
@@ -49,10 +49,6 @@ hide:
   <article>
     <h3><a href="describe/">describe</a> / <a href="https://github.com/keppy/MCPM">MCPM</a></h3>
     <p>Speak systems into existence. An MCP capability manager: discover servers, write client config, read the capability map back as resources and prompts.</p>
-  </article>
-  <article>
-    <h3><a href="https://github.com/keppy/ds4">ds4</a></h3>
-    <p>A DeepSeek 4 Flash local inference engine for Metal. Small models on your own silicon.</p>
   </article>
   <article>
     <h3><a href="https://github.com/keppy/cobol-reporter">cobol-reporter</a></h3>
@@ -65,10 +61,6 @@ hide:
   <article>
     <h3><a href="https://github.com/keppy/WorldEnder.ai">WorldEnder.ai</a></h3>
     <p>RAG-powered text adventures with coherent long-horizon world state. Predict the end of the world.</p>
-  </article>
-  <article>
-    <h3><a href="https://github.com/keppy/recurse">recurse</a></h3>
-    <p>A numbered visual series that remembers itself: plan → draw → render → reflect → remember.</p>
   </article>
 </div>
 
@@ -92,4 +84,4 @@ Recent writings on evals, fine-tuning, and shipping AI before it's ready:
   </form>
 </div>
 
-[@yok0zuna](https://twitter.com/yok0zuna) | [GitHub](https://github.com/keppy) | [Hugging Face](https://huggingface.co/keppy) | [Contact](contact/)
+[@yok0zuna](https://twitter.com/yok0zuna) | [GitHub](https://github.com/keppy) | [Hugging Face](https://huggingface.co/keppy) | [Contact](contact.md)

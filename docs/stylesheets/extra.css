@@ -16,19 +16,63 @@
   --kl-void: #050508;
 }
 
-/* Instrument Serif carries display type; mono carries the machine voice. */
+/* Instrument Serif carries display type; mono carries the machine voice.
+   Old-school body: everything set in mono, square corners, underlined links. */
 .md-typeset {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  font-size: 0.82rem;
   font-feature-settings: "liga" 1;
+}
+
+.md-typeset .kl-hero-copy h1,
+.md-typeset .kl-hero-copy h2 {
+  font-family: "Instrument Serif", "Georgia", serif;
 }
 
 .md-typeset h1,
 .md-typeset h2,
 .md-typeset h3,
-.kl-eyebrow,
 .kl-c-offer-tag,
 .gng-verdict {
-  font-family: "Instrument Serif", "Georgia", serif;
-  font-weight: 400;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Nothing in this lab is rounded. */
+.md-typeset .kl-button,
+.kl-map div,
+.kl-feature-grid article,
+.kl-newsletter,
+.kl-newsletter input,
+.kl-newsletter button,
+.kl-c-offer-grid article,
+.kl-c-compare,
+.kl-c-scorecard,
+.kl-c-cta,
+.kl-c-steps > li,
+.gng,
+.gng-op,
+.gng-bar,
+.kl-c-bar,
+.kl-c-flag {
+  border-radius: 0;
+}
+
+.md-typeset a {
+  color: var(--kl-teal);
+  text-decoration: underline;
+  text-decoration-color: rgba(94, 234, 212, 0.4);
+  text-underline-offset: 3px;
+}
+
+.md-typeset a:hover {
+  color: var(--kl-violet);
+  text-decoration-color: var(--kl-violet);
+}
+
+.kl-feature-grid article {
+  border-style: dashed;
 }
 
 .md-typeset code,

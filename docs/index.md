@@ -8,7 +8,7 @@ hide:
 
 <section class="kl-hero kl-hero-lead">
   <div class="kl-hero-copy">
-    <p class="kl-eyebrow">the workbench is public</p>
+    <p class="kl-eyebrow">public workbench</p>
     <h1>Small strange machines for understanding software — and for knowing when software is lying to you.</h1>
     <p class="kl-lede">
       KeppyLab is the research bench of github.com/keppy: evaluation harnesses, RL training

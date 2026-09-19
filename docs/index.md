@@ -34,6 +34,10 @@ hide:
     <p><code>thomas.train()</code> — a training harness. Case → reward → train: take a Case set and a score function, get a baseline card, run the loop, compare before and after. Pretrain on Modal GPUs or post-train with LoRA RL.</p>
   </article>
   <article>
+    <h3><a href="https://github.com/keppy/titans-mini">titans-mini</a></h3>
+    <p>A streaming engine over a swappable test-time memory core: MLP-weights memory vs. generated-weights vector memory, behind one narrow interface. The engine owns the loop, the core owns storage — 21 tests pin the autograd claims.</p>
+  </article>
+  <article>
     <h3><a href="https://github.com/keppy/cotfaith">cotfaith</a></h3>
     <p>Chain-of-thought (un)faithfulness, study one: hint-following and confession rates on Qwen3-1.7B. Pre-registered decision log, blind-labeled judge validation, byte-exact run artifacts.</p>
   </article>

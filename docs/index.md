@@ -72,6 +72,7 @@ hide:
 
 Recent writings on evals, fine-tuning, and shipping AI before it's ready:
 
+- [banking77 canary: 87.2% pass, two dead runs, one false alarm](blog/posts/2026-09-21-banking77-canary.md)
 - [Your agent eval is lying to you](blog/posts/your-agent-eval-is-lying-to-you.md)
 - [Fine-tuning Pythia](blog/posts/fine-tuning-pythia.md)
 - [The rare disease hackathon](blog/posts/rare-diseases-hackathon.md)

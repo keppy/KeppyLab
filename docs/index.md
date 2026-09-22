@@ -22,6 +22,18 @@ hide:
   </div>
 </section>
 
+<section class="kl-video-feature">
+  <a href="blog/2026/09/21/banking77-canary-872-pass-two-dead-runs-one-false-alarm/">
+    <img class="kl-video-thumb" src="https://i.ytimg.com/vi/ozWITnaJtf4/hqdefault.jpg" alt="Fine-tuning an encoder and getting a go/no-go verdict — thomas + gonogo" loading="lazy">
+    <span class="kl-video-copy">
+      <span class="kl-eyebrow">latest from the bench · 40:33</span>
+      <strong>Fine-tuning an encoder and getting a go/no-go verdict</strong>
+      <span class="kl-video-meta">thomas + gonogo worked live on a Modal L4: a dispatch that died, a stale volume snapshot, and a scorer bug that scored the fresh model 0.0% — then 87.2% against a 95% target and an operating point at 0.91. The verdict lands at 38:54; the live demo starts at 37:16.</span>
+      <span class="kl-video-cta">watch it, and read the writeup</span>
+    </span>
+  </a>
+</section>
+
 ## The Work
 
 <div class="kl-feature-grid">
@@ -72,11 +84,11 @@ hide:
 
 Recent writings on evals, fine-tuning, and shipping AI before it's ready:
 
-- [banking77 canary: 87.2% pass, two dead runs, one false alarm](blog/posts/2026-09-21-banking77-canary.md)
-- [Your agent eval is lying to you](blog/posts/your-agent-eval-is-lying-to-you.md)
-- [Fine-tuning Pythia](blog/posts/fine-tuning-pythia.md)
-- [The rare disease hackathon](blog/posts/rare-diseases-hackathon.md)
-- [I demoed too early](blog/posts/i-demoed-too-early.md)
+- [banking77 canary: 87.2% pass, two dead runs, one false alarm](blog/2026/09/21/banking77-canary-872-pass-two-dead-runs-one-false-alarm/)
+- [Your agent eval is lying to you](blog/2026/07/28/your-agent-eval-is-lying-to-you-4750-is-not-94/)
+- [Fine-tuning Pythia](blog/2023/06/24/fine-tuning-pythia-by-hand-and-calculating-ppl/)
+- [The rare disease hackathon](blog/2024/07/03/research-to-the-people-and-stanford-medicines-rare-disease-ai-hackathon/)
+- [I demoed too early](blog/2024/06/10/i-demoed-too-early/)
 
 <div class="kl-newsletter">
   <form action="https://app.loops.so/api/newsletter-form/clw02o2mi010kgpl3nac0bbiv" method="POST">

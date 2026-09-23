@@ -101,4 +101,4 @@ Recent writings on evals, fine-tuning, and shipping AI before it's ready:
   </form>
 </div>
 
-[@yok0zuna](https://twitter.com/yok0zuna) | [GitHub](https://github.com/keppy) | [Hugging Face](https://huggingface.co/keppy) | [Contact](contact.md)
+[GitHub](https://github.com/keppy) | [Hugging Face](https://huggingface.co/keppy) | [Contact](contact.md)

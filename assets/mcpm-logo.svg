@@ -1,0 +1,9 @@
+<svg width="160" height="48" viewBox="0 0 160 48" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@800');
+    .name { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 32px; }
+    .arrow { font-family: 'JetBrains Mono', monospace; font-size: 32px; }
+  </style>
+  <text x="8" y="34" class="name" fill="#1a1a1a">MCPM</text>
+  <text x="110" y="34" class="arrow" fill="#6366f1">→</text>
+</svg>

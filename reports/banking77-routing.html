@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Score report: Route customer message to the right queue</title>
+<style>
+.gng {
+  --gng-ink: #111827;
+  --gng-muted: #4b5563;
+  --gng-border: #d1d5db;
+  --gng-wash: #f8fafc;
+  --gng-ok: #0f766e;
+  --gng-under: #b45309;
+  --gng-accent: var(--gng-ok);
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1.25rem;
+  border: 1px solid var(--gng-border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--gng-ink);
+  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.gng[data-verdict="automate"] { --gng-accent: #0f766e; }
+.gng[data-verdict="automate-with-review"] { --gng-accent: #0f766e; }
+.gng[data-verdict="assist-only"] { --gng-accent: #b45309; }
+.gng[data-verdict="do-not-automate"] { --gng-accent: #9f1239; }
+.gng[data-verdict="insufficient-evidence"] { --gng-accent: #4b5563; }
+.gng-head { padding-left: .75rem; border-left: 3px solid var(--gng-accent); }
+.gng-task { margin: 0; color: var(--gng-muted); font-size: .72rem; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase; }
+.gng-verdict { margin: .15rem 0 0; color: var(--gng-accent); font-size: 1.5rem;
+  font-weight: 800; line-height: 1.1; }
+.gng-gloss { margin: .15rem 0 0; color: var(--gng-muted); font-size: .95rem; }
+.gng-reason { margin: 1rem 0 0; color: var(--gng-ink); }
+.gng-note, .gng-op-nums { color: var(--gng-muted); font-size: .82rem; }
+.gng-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .5rem 1rem; margin: 1rem 0 0; }
+.gng-facts > div { display: flex; justify-content: space-between; gap: .5rem;
+  padding-bottom: .35rem; border-bottom: 1px solid var(--gng-border); }
+.gng-facts dt { color: var(--gng-muted); font-size: .8rem; }
+.gng-facts dd { margin: 0; font-size: .85rem; font-weight: 700;
+  font-variant-numeric: tabular-nums; }
+.gng-op { margin: 1.25rem 0 0; padding: .85rem 1rem; border-left: 3px solid var(--gng-accent);
+  border-radius: 0 8px 8px 0; background: var(--gng-wash); }
+.gng-op p { margin: .2rem 0 0; }
+.gng-op-title { margin: 0 !important; color: var(--gng-muted); font-size: .72rem;
+  font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.gng-table { width: 100%; margin: 1.5rem 0 0; border-collapse: collapse;
+  font-variant-numeric: tabular-nums; }
+.gng-table caption { margin-bottom: .4rem; color: var(--gng-muted); font-size: .72rem;
+  font-weight: 700; letter-spacing: .04em; text-align: left; text-transform: uppercase; }
+.gng-table th { padding: 0 .5rem .35rem 0; border-bottom: 1px solid var(--gng-border);
+  color: var(--gng-muted); font-size: .7rem; font-weight: 700; text-align: left;
+  text-transform: uppercase; }
+.gng-table td { padding: .45rem .5rem .45rem 0; border-bottom: 1px solid var(--gng-border);
+  font-size: .85rem; }
+.gng-table th:last-child, .gng-table td:last-child { padding-right: 0; text-align: right; }
+.gng-ci { color: var(--gng-muted); font-size: .75rem; }
+.gng-ok { color: var(--gng-ok); }
+.gng-under { color: var(--gng-under); }
+.gng-bar { display: inline-block; width: 2.75rem; height: .35rem; margin-right: .45rem;
+  overflow: hidden; border-radius: 999px; background: rgba(17,24,39,.12);
+  vertical-align: middle; }
+.gng-bar i { display: block; width: var(--pct, 0%); height: 100%; background: var(--gng-accent); }
+.gng-caveats { margin: 1.25rem 0 0; }
+.gng-caveats ul { margin: .35rem 0 0; padding-left: 1.1rem; }
+.gng-caveats li { color: var(--gng-muted); font-size: .82rem; margin-bottom: .3rem; }
+.gng code { font-size: .8em; }
+@media (max-width: 34rem) {
+  .gng-facts { grid-template-columns: 1fr; }
+  .gng-bar { display: none; }
+}
+@media (prefers-color-scheme: dark) {
+  .gng:not([data-theme]) {
+    --gng-ink: #e5e7eb; --gng-muted: #9ca3af; --gng-border: #374151; --gng-wash: #111827;
+    --gng-ok: #5eead4; --gng-under: #fbbf24;
+    background: #0b1220;
+  }
+}
+</style>
+</head>
+<body>
+<section class="gng" data-verdict="assist-only">
+<header class="gng-head">
+<p class="gng-task">Route customer message to the right queue</p>
+<p class="gng-verdict">ASSIST ONLY</p>
+<p class="gng-gloss">Use it to draft, keep a human on every case.</p>
+</header>
+<p class="gng-reason">Pass rate 77.2% [71.6%, 82.0%] is well short of the 95% target and no confident subset reaches it; useful as a draft-generator, not as an unattended step.</p>
+<dl class="gng-facts">
+<div><dt>Cases evaluated</dt><dd>250</dd></div>
+<div><dt>Passed</dt><dd>193</dd></div>
+<div><dt>Pass rate</dt><dd>77.2% [71.6%, 82.0%]</dd></div>
+<div><dt>Target</dt><dd>95%</dd></div>
+<div><dt>Calibration error</dt><dd>0.42 (ranks cases, scale unreliable)</dd></div>
+</dl>
+<p class="gng-note">The pass rate carries a 95% confidence interval. With 250 cases the true rate could plausibly sit anywhere in that range, which is why the interval and not the headline number drives the decision.</p>
+<table class="gng-table"><caption>Coverage vs precision</caption><thead><tr><th scope="col">Confidence floor</th><th scope="col">Handled</th><th scope="col">Precision</th><th scope="col">To review</th></tr></thead><tbody>
+<tr><td>0.03</td><td><span class="gng-bar" style="--pct:100%"><i></i></span>100%</td><td class="gng-under">77.2% <span class="gng-ci">[71.6%, 82.0%]</span></td><td>0</td></tr>
+<tr><td>0.10</td><td><span class="gng-bar" style="--pct:85%"><i></i></span>85%</td><td class="gng-under">81.7% <span class="gng-ci">[76.0%, 86.3%]</span></td><td>37</td></tr>
+<tr><td>0.18</td><td><span class="gng-bar" style="--pct:70%"><i></i></span>70%</td><td class="gng-under">85.1% <span class="gng-ci">[79.1%, 89.7%]</span></td><td>75</td></tr>
+<tr><td>0.26</td><td><span class="gng-bar" style="--pct:57%"><i></i></span>57%</td><td class="gng-under">88.0% <span class="gng-ci">[81.7%, 92.4%]</span></td><td>108</td></tr>
+<tr><td>0.39</td><td><span class="gng-bar" style="--pct:40%"><i></i></span>40%</td><td class="gng-under">90.0% <span class="gng-ci">[82.6%, 94.5%]</span></td><td>150</td></tr>
+<tr><td>0.51</td><td><span class="gng-bar" style="--pct:27%"><i></i></span>27%</td><td class="gng-under">94.1% <span class="gng-ci">[85.8%, 97.7%]</span></td><td>182</td></tr>
+<tr><td>0.66</td><td><span class="gng-bar" style="--pct:14%"><i></i></span>14%</td><td class="gng-under">97.2% <span class="gng-ci">[85.8%, 99.5%]</span></td><td>214</td></tr>
+<tr><td>0.96</td><td><span class="gng-bar" style="--pct:0%"><i></i></span>0%</td><td class="gng-under">100.0% <span class="gng-ci">[20.7%, 100.0%]</span></td><td>249</td></tr>
+</tbody></table>
+<table class="gng-table"><caption>Calibration</caption><thead><tr><th scope="col">Stated confidence</th><th scope="col">Cases</th><th scope="col">Mean confidence</th><th scope="col">Actual accuracy</th></tr></thead><tbody>
+<tr><td>0.0-0.2</td><td>83</td><td>0.11</td><td class="gng-under">61%</td></tr>
+<tr><td>0.2-0.4</td><td>74</td><td>0.30</td><td class="gng-under">78%</td></tr>
+<tr><td>0.4-0.6</td><td>50</td><td>0.51</td><td class="gng-under">84%</td></tr>
+<tr><td>0.6-0.8</td><td>30</td><td>0.70</td><td class="gng-under">97%</td></tr>
+<tr><td>0.8-1.0</td><td>13</td><td>0.87</td><td class="gng-ok">100%</td></tr>
+</tbody></table>
+<div class="gng-caveats"><p class="gng-op-title">Caveats</p><ul>
+<li>Calibration error 0.42 exceeds 0.15: the confidence score ranks cases usefully but its scale is not a probability. Treat any threshold below as an opaque cut point, and recalibrate before reading it as a percentage.</li>
+</ul></div>
+<div class="gng-caveats"><p class="gng-op-title">Failures worth reading (57 total)</p><ul>
+<li><code>msg-0001</code> (confidence 0.07): expected 'failed_transfer', got 'balance_not_updated_after_bank_transfer'</li>
+<li><code>msg-0010</code> (confidence 0.12): expected 'wrong_exchange_rate_for_cash_withdrawal', got 'declined_cash_withdrawal'</li>
+<li><code>msg-0022</code> (confidence 0.05): expected 'getting_spare_card', got 'card_linking'</li>
+<li><code>msg-0023</code> (confidence 0.15): expected 'pending_card_payment', got 'transfer_timing'</li>
+<li><code>msg-0024</code> (confidence 0.11): expected 'pending_transfer', got 'balance_not_updated_after_bank_transfer'</li>
+</ul></div>
+</section>
+</body>
+</html>

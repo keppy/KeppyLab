@@ -1088,3 +1088,40 @@ body:has(.kl-hero-lead) .md-content__inner > h1:first-child {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* /workshop/: one-field signup, reached from a QR code on a phone. */
+.md-typeset .kl-signup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin: 1.2rem 0 1.6rem;
+}
+.md-typeset .kl-signup label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.md-typeset .kl-signup input[type="email"] {
+  flex: 1 1 16rem;
+  min-width: 0;
+  padding: 0.7rem 0.8rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--kl-ink);
+  background: var(--kl-wash);
+  border: 1px solid var(--kl-border);
+}
+.md-typeset .kl-signup button {
+  flex: 0 0 auto;
+  padding: 0.7rem 1.1rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--kl-void);
+  background: var(--kl-violet);
+  border: 0;
+  cursor: pointer;
+}

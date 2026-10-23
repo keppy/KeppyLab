@@ -26,6 +26,7 @@ nav:
 # old links point at /consulting/) but is no longer offered in the nav.
 # describe and live-resume are hidden pages.
 not_in_nav: |
+  workshop.md
   consulting.md
   describe.md
   live-resume/index.md

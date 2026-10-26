@@ -1125,3 +1125,21 @@ body:has(.kl-hero-lead) .md-content__inner > h1:first-child {
   border: 0;
   cursor: pointer;
 }
+
+.md-typeset .kl-star {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+  margin: 0.4rem 0 0.6rem;
+}
+.md-typeset a.kl-star-button {
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  color: var(--kl-ink);
+  border: 1px solid var(--kl-violet);
+  text-decoration: none;
+}
+.md-typeset a.kl-star-button:hover {
+  background: var(--kl-wash);
+}

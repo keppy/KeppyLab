@@ -22,6 +22,12 @@ Leave your email to hear when dates are set. One email when it opens, nothing el
   })();
 </script>
 
+<p class="kl-star">
+  <a class="kl-star-button" href="https://github.com/keppy/gonogo">★ Star gonogo on GitHub</a>
+</p>
+
+Stars are how other engineers find it, and how I know the work is useful.
+
 ## Try it now
 
 ```bash

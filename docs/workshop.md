@@ -1,5 +1,7 @@
 # gonogo workshop
 
+**James Dominguez** — agent harnesses and evals · [★ Save my contact](/james.vcf) · [Email me](mailto:james@keppylab.com) · [GitHub](https://github.com/keppy)
+
 A hands-on workshop on measuring agents: grading every decision an agent makes, including the
 ones where the right move was not to act, and turning the score into a deployment decision
 you can defend.
@@ -39,4 +41,4 @@ gonogo 47/50 --target 0.9
 - The inbox-triage example from the talk: [examples/inbox_triage](https://github.com/keppy/gonogo/tree/main/examples/inbox_triage)
 - The encoder gate: [huggingface.co/keppy/inbox-triage-encoder](https://huggingface.co/keppy/inbox-triage-encoder)
 
-Want me to look at your agent harness? Email ^^james@keppylab.com^^.
+Want me to look at your agent harness? Email [james@keppylab.com](mailto:james@keppylab.com).
